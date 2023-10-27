@@ -1,0 +1,39 @@
+
+.menu{
+    	/* float:left; */
+        width:300px;
+        height: 400px;
+        /* text-align:center; */
+    }
+.navi {
+        position: relative;
+        left: 35px;
+        width: 300px;
+        height: 400px;
+    }
+.navi>li{
+        float:left;
+        width: 300px;
+    }
+    
+.navi>li>span{
+        line-height:40px;
+        color:#000;
+        font-size:16px;
+        font-weight:600;
+        cursor: pointer;
+    }
+.navi>li>span:hover {
+        color: #fff;
+    }
+.submenu{
+        display: none;
+    }
+.submenu>li>a {
+        line-height:30px;
+        height: 30px;
+        font-size:14px;
+    }
+.submenu>li>a:hover {
+        color: #ddd;
+    }
