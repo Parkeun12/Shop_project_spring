@@ -5,8 +5,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 
 @Controller
 public class FirstController {
-    @GetMapping("/articles/test")
+    @GetMapping("/articles/Main")
     public String niceToMeetYou(){
-        return "/articles/test";
+        return "/articles/Main_page";
     }
 }
