@@ -157,7 +157,7 @@ section .right_main_view .product {
 
 .product_list .list {
     /* width: calc(33.33% - 10px); 삭제*/
-    margin-bottom: -160px;
+    margin-bottom: -10px;
 }
 
 @media (max-width: 768px) {
@@ -171,11 +171,10 @@ section .right_main_view .product {
 }
 
 .product_img {
-    z-index: 1;
-    top: -180px;
-    left: 5px;
+    z-index: 2;
     position: relative;
-    margin: 0 auto;
+    margin-top: 30px;
+    margin-bottom: 15px;
 }
 
 .img_text {
@@ -188,14 +187,20 @@ section .right_main_view .product {
 }
 
 #snap {
-    z-index: 2;
-    position: relative;
-    top: 360px;
-    left: 5px;
-    width: 355px;
+    z-index: 3;
+    position: absolute;
+    margin-top: 340px;
+    width: 354px;
     height: 200px;
     background-color: white;
-    opacity: 70%;
+    opacity: 0;
+    /* display: ; */
+    transition: opacity 0.3s ease;
+}
+
+
+#snap:hover {
+    opacity: 80%; /* Change opacity to 1 when hovering */
 }
 
 .product_basket img {
