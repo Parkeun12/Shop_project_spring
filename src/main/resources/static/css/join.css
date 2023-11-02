@@ -1,0 +1,148 @@
+* {
+    list-style: none;
+    margin: 0 auto;
+}
+/* 회원 가입 글자 */
+.h3 {
+    position:relative;
+    top: 40px;
+    width: 100px;
+    height: 30px;
+}
+/* 입력창 부분 */
+table{
+	width : 800px;
+	height : 300px;
+    margin-top: 50px;
+    margin-left: 600px;
+    font-size : 12px;
+}
+table,tr,th{
+	border : 1px solid #ccc;
+	border-collapse : collapse;
+    border-left: none;
+}
+tr span{
+	color : blue;
+}
+th{
+	padding : 5px;
+	text-align : left;
+}
+form div{
+	padding : 5px;
+}
+.allagree {
+    width: 100px;
+    height: 20px;
+    position: relative;
+    right:300px;
+}
+
+
+/* 폼 전체 감싸는 랩 */
+.wrap {
+    position: inherit;
+    width: 800px;
+    height: 780px;
+    margin:0 auto;
+    margin-left: 600px;
+    border: 1px solid #ccc;
+    padding: 0;
+}
+/* 전체 동의 부분  */
+.Chk {
+    position: relative;
+    float: left;
+    height: 40px;
+    width: 800px;
+    border-bottom: 1px solid #ccc;
+}
+.Chk div input[type=checkbox]{
+    margin-left: 10px;
+    margin-top: 12px;
+}
+.Chk div {
+    width: 800px;
+    position: absolute;
+    top: 0;
+    height: 40px;
+    padding: 0;
+}
+.small {
+    font-size: 0.8em;
+    color: #888;
+    margin-left: 5px;
+}
+/*  필수,. 선택 부분  */
+.Chk1, .Chk2, .Chk3{
+    position: relative;
+    top: 0;
+    float: left;
+    width: 800px;
+    height: 220px;
+    border-bottom: 1px solid #ccc;
+}
+.Chk1 .first, .second, .third {
+    padding: 0;
+    width: 800px;
+    height: 220px;
+    position: absolute;
+    top: 0;
+}
+.first ul li, .second ul li, .third ul li  {
+    margin-left: -20px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+.first div, .second div, .third div {
+    position: absolute;
+    top: 180px;
+    left: 10px;
+    color: #888;
+    font-size: 0.8em;
+}
+/* 글자 크기나 볼드부분 */
+.bold1, .bold2, .bold3, .bold4, .bold5, .bold6 {
+    font-weight: bold;
+    height: 30px;
+    color: #888;
+    font-size: 0.8em;
+}
+
+/* 글자 "필수" 디자인 */
+.agree_header, .agree_header1 {
+    font-size: 0.8em;
+    color: #888;
+    font-weight: bold;
+}
+
+/* 글자 "선택" 디자인 */
+.agree_header2 {
+    font-size: 0.8em;
+    color: #888;
+    font-weight: bold;
+}
+/* 스크롤 텍스트 설명 부분 디자인 */
+textarea {
+    width: 760px;
+    height: 130px;
+    color: #888;
+    border: 1px solid #ccc;
+    position: absolute;
+    left: 15px;
+}
+
+/* 회원가입 버튼 */
+input[type=submit]{
+    width: 120px;
+    height: 40px;
+    line-height: 40px;
+    position: relative;
+    top: 15px;
+    left: 320px;
+    background: #2e2e2e;
+    border: none;
+    color: #fff;
+    font-weight: bold;
+    }
