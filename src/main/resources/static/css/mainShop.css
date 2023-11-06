@@ -1,0 +1,143 @@
+*{
+    margin:0 auto;
+}
+li{
+    list-style:none;
+}
+.clear{
+    clear:both;
+}
+a{
+    list-style:none;
+    text-decoration:none;
+    color:#000;
+    cursor:pointer;
+}
+
+/*header*/
+/*장바구니, 로그인*/
+body{
+    overflow-x:hidden;
+}
+header{
+    position:relative;
+}
+header .icon_side{
+    position:absolute;
+    top:0;
+    right:0;
+    z-index:2;
+    text-align:center;
+}
+header .icon_side > div{
+    display: flex;
+    margin-top:1.5625vw;
+    margin-right:1.5625vw;
+}
+header .icon_side img{
+    width:100%;
+}
+header .icon_side .icon_member{
+    width:1.302vw;
+}
+header .icon_side .icon_basket{
+    width:1.302vw;
+    margin-left:1.0416vw;
+}
+
+/*section*/
+section{
+    width:100%;
+    position:relative;
+    box-sizing:border-box;
+}
+
+/*leftSide*/
+section .left_side{
+    width:15.625vw;
+    height:100%;
+    background-color:rgba(150,150,150,1);
+    position:fixed;
+    left:0;
+    z-index:2;
+    box-sizing: border-box;
+    word-wrap: break-word;
+}
+.left_side div.logo{
+    margin:3.708vw 0 3.708vw 0;
+    text-align:center;
+}
+.left_side div.logo img{
+    width:50%;
+}
+.left_side .sideText{
+    text-align:center;
+    font-family:Arial !important;
+    font-style:italic;
+    font-weight:bold;
+    font-size:18px;
+}
+.left_side .sideText .sideTextMenu{
+    padding:0;
+    background-color:#fff;
+    margin-top:0.5208vw;
+    font-size:14px;
+    font-style:normal;
+    display:none;
+}
+.left_side .sideText .s_menu span{
+    cursor: pointer;
+}
+.left_side .sideText .sideTextMenu a{
+    display:block;
+    padding:0.5208vw 0 0.5208vw 0;
+}
+.left_side .sideText .sideTextMenu a:hover{
+    background-color:#852468;
+}
+.left_side .sideText h1{
+    margin-bottom:1.0416vw;
+}
+.left_side .sideText h1:last-child{
+    margin-bottom:0;
+}
+
+/*rightSide*/
+section .right_main_view{
+    position:absolute;
+    word-wrap:break-word;
+    box-sizing:border-box;
+    z-index:1;
+    width:84.375vw;
+    left:15.625vw;
+}
+section .right_main_view .mainImg{
+    height:48.47vw;
+}
+section .right_main_view .mainImg video{
+    height:100%;
+}
+/*상품섹션*/
+section .right_main_view .product{
+    text-align:center;
+}
+
+/*footer*/
+#footer .shop_footer{
+    /* 원래 css에서 임의로 추가함-->위치 잡기 위해서 */
+    margin-top: 400px;
+    
+    height:10.416vw;
+    background-color: #000;
+    color:#fff;
+    text-align:center;
+    font-family: Arial, Helvetica, sans-serif;
+}
+#footer .shop_footer .textBox:first-child{
+    padding-top:1.0416vw;
+}
+#footer .shop_footer .textBox:first-child h1{
+    font-size:14px;
+    font-weight:lighter;
+    display:inline;
+}

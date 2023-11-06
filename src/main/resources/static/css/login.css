@@ -1,0 +1,72 @@
+/* 로그인 전체 감싸는 구역 */
+.container {
+    position: relative;
+    top: 170px;
+    left:100px;
+}
+/* 로그인 글자 감싸는 구역 */
+#text {
+    width: 200px;
+    height: 50px;
+    margin-top: 0px;
+}
+/* 로그인, member login 글자 */
+h2, h3 {
+    text-align: center;
+}
+/* 폼 전체 감싸는 랩 */
+#wrap {
+    border: 2px solid #ddd;
+    width: 600px;
+    margin: 0px auto;
+    height: 300px;
+    text-align: center;
+}
+/* member login감싸는 구역 */
+.text {
+    width: 200px;
+    height: 10px;
+    margin-top:50px;
+}
+/* 폼만 감싸는 구역 */
+.input {
+    width: 500px;
+    height: 100px;
+    position: relative;
+}
+/* 아이디, 비밀번호 */
+input[type=text],[type=password]{
+    width: 350px;
+    height: 40px;
+    position: absolute;
+}
+/* 아이디만 */
+input[type=text]{
+    left: 0;
+    top: 50px;
+}
+/* 비밀번호만 */
+input[type=password]{
+    top: 100px;
+    left: 0px;
+}
+/* 아이디 찾기, 비밀번호 찾기, 회원가입 글자 */
+.move {
+    position: absolute;
+    top: 150px;
+}
+.join{
+    position:relative;
+    left:210px;
+}
+/* 확인(전송) 버튼 */
+input[type=submit]{
+    width: 100px;
+    height: 100px;
+    background: #2e2e2e;
+    border: none;
+    color: #fff;
+    position: absolute;
+    top: 48px;
+    right: 35px;
+}
