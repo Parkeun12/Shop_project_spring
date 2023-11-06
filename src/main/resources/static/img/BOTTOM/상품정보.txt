@@ -1,0 +1,34 @@
+1. 상품제목
+2. 가격
+3. 색상
+4. 사이즈
+
+BottomImg1
+1. cut off sweat pants, 녹임 남자 여자 스웻 버뮤다 헬스 머슬 반바지 팬츠
+2. 54,000원
+3. 흰색 회색 검정
+4. Free
+
+BottomImg2
+1. wave pattern danim pants, 녹임 남자 와이드 절개 청바지 데님 팬츠
+2. 61,000원
+3. 검정 하늘
+4. S / M / L
+
+BottomImg3
+1. parachute pants, 녹임 남자 여자 핀턱 투턱 와이드 슬랙스 스트링 팬츠
+2. 72,000원
+3. 검정 회색
+4. Free
+
+BottomImg4
+1. Waffle Velcro pants, 녹임 남자 여자 벨트 반바지 헬스
+2. 58,000원
+3. 검정 파랑 회색 흰색
+4. M / L
+
+BottomImg5
+1. dirty washing jeans, 녹임 남자 여자 와이드 화이트 팬츠
+2. 63,000원
+3. 흰색
+4. S / M
