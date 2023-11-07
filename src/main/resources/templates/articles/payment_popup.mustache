@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0 auto;
+            padding: 0;
+        }
+
+        /* #cart_btn {
+            background-color: white;
+            border: 2px solid #3b3b3b;
+            border-radius: 3px;
+            color: #3b3b3b;
+            width: 110px;
+            height: 35px;
+            cursor: pointer;
+        } */
+
+        img {
+            width: 100px;
+            padding: 10px;
+        }
+
+        .img {
+            display: inline-block;
+            /* width: 100px; */
+        }
+
+        .count {
+            position: relative;
+        }
+
+        input[type=text] {
+            width: 15px;
+            height: 15px;
+            text-align: center;
+        }
+
+        .count button {
+            background: #ccc;
+            border: none;
+            box-sizing: border-box;
+            width: 20px;
+            height: 20px;
+            cursor: pointer;
+        }
+
+        .img_option {
+            display: inline-block;
+            flex-direction: column;
+        }
+
+        .product_name {
+            position: relative;
+            top: -50px;
+            font-weight: bold;
+            font-size: 13px;
+            /* display: inline-block;
+            flex-direction: column; */
+        }
+
+        .option_title {
+            padding: 10px;
+        }
+
+        .option_select1 {
+            /* display: inline-block; */
+            position: relative;
+            bottom: 32px;
+            width: 250px;
+            height: 25px;
+            font-size: 11px;
+            font-weight: 400;
+        }
+
+        .option_text1 {
+            font-size: 11px;
+            position: relative;
+            bottom: 38px;
+        }
+
+        .option_select2 {
+            /* display: inline-block; */
+            position: relative;
+            bottom: 20px;
+            width: 250px;
+            height: 25px;
+            font-size: 11px;
+            font-weight: 400;
+        }
+
+        .option_text2 {
+            font-size: 11px;
+            position: relative;
+            bottom: 25px;
+        }
+
+        .tr {
+            display: table-row;
+            vertical-align: inherit;
+            border-color: inherit;
+        }
+
+        /* .option_product{
+            border-top: 1px solid #e5e5e5;
+        } */
+
+        .op_product {
+            position: relative;
+            padding: 15px 10px 0px 15px;
+            font-weight: bold;
+            line-height: 21px;
+            font-size: 13px;
+            width: 100px;
+            /* right: 135px; */
+            float: left;
+        }
+
+        .op_border {
+            border-top: 1px solid #e5e5e5;
+        }
+
+        .op_product span {
+            color: #919191;
+            font-size: 11px;
+        }
+
+        .count {
+            position: relative;
+            top: 20px;
+            left: 150px;
+        }
+
+        .box {
+            width: 15px;
+            height: 15px;
+            float: right;
+            position: relative;
+            top: 2px;
+            right: 10px;
+            padding: 0;
+            text-align: center;
+            font-size: 12px;
+            font-weight: bold;
+            border: none;
+            cursor: pointer;
+            background-color: white;
+        }
+
+        .order_btn {
+            width: 150px;
+            height: 40px;
+            border-radius: 2px;
+            border: 1px solid #333333;
+            background: #333333;
+            font-weight: bold;
+            text-align: center;
+            /* position: relative; */
+            /* top: 150px;
+            left: 100px; */
+            cursor: pointer;
+            color: white;
+        }
+
+        .or_btn{
+            margin-top: 160px;
+            margin-left: 120px;
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="option_title">
+    옵션 선택
+</div>
+
+<div class="img">
+    <img src="/img/TOP/TopImg2.jpg">
+</div>
+
+<div class="img_option">
+    <div class="product_name">
+        상품명
+    </div>
+
+    <div class="option_text1">
+        색상
+    </div>
+
+    <select class="option_select1">
+        <option>[필수] 옵션을 선택해주세요.</option>
+        <option>BLACK</option>
+        <option>WHITE</option>
+    </select>
+
+    <div class="option_text2">
+        사이즈
+    </div>
+
+    <select class="option_select2">
+        <option>[필수] 옵션을 선택해주세요.</option>
+        <option>S</option>
+        <option>M</option>
+        <option>L</option>
+    </select>
+</div>
+
+<div class="option_all">
+    <tr class="option_product">
+        <td>
+            <div class="op_border">
+                <input type="hidden" class="option_box">
+                <p class="op_product">
+                    상품명
+                    <br>
+                    -
+                    <span>BLACK S</span>
+                </p>
+            </div>
+        </td>
+        <td>
+            <div class="count">
+                    <span>
+                        <button class="minus_btn">-</button>
+                        <input type="text" class="quantity_input" value="1">
+                        <button class="plus_btn">+</button>
+                    </span>
+            </div>
+        </td>
+        <td>
+            <button class="box" onclick="none()">
+                x
+            </button>
+        </td>
+    </tr>
+</div>
+
+<div class="or_btn">
+    <input type="button" id="cart_btn" class="order_btn" value="구매하기" onclick="moveClose();" />
+</div>
+
+<script>
+    function moveClose() {
+        opener.location.href = "/articles/order_payment"
+        self.close();
+    }
+
+    function none() {
+        document.querySelector(".option_all").style.display = "none";
+    }
+</script>
+
+</body>
+
+</html>

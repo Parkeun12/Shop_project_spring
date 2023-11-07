@@ -30,4 +30,3 @@ public class Article {
     @Column(name = "users_email")
     private String email;
 
-}

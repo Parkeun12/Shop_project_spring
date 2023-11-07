@@ -1,0 +1,34 @@
+1. 상품제목
+2. 가격
+3. 색상
+4. 사이즈
+
+EtcImg1
+1. new bolloon pants, 녹임 남자 여자 와이드 벌룬 핀턱 린넨 팬츠
+2. 64,000원
+3. 초록 파랑
+4. Free
+
+EtcImg2
+1. cut denim pants, 녹임 남자 와이드 찢청 청바지 연청 흑청
+2. 64,000원
+3. 검정 하늘
+4. S / M / L
+
+EtcImg3
+1. Side double line pants, 남자 여자 커플 트레이닝 세트 셋업 트랙 팬츠
+2. 39,000원
+3. 검정 파랑
+4. Free
+
+EtcImg4
+1. Pocket pants, 남자 코튼 와이드 면 핀턱 비조 포켓 미니멀 팬츠
+2. 53,000원
+3. 검정 살색
+4. M / L
+
+EtcImg5
+1. Cloud knit jumper, 녹임 남자 여자 커플 공용 투웨이 지퍼 니트 집업 크리스마스룩
+2. 71,610원
+3. 검정 초록 갈색 파랑
+4. Free

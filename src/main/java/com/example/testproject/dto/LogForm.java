@@ -1,7 +1,5 @@
 package com.example.testproject.dto;
 
-
-import com.example.testproject.entity.Article;
 import com.example.testproject.entity.Log;
 
 public class LogForm {
