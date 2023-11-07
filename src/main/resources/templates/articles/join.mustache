@@ -42,7 +42,7 @@
                 <th>아이디<span>*</span></th>
                 <td>
                     <div class="id">
-                        <input type="text" size="20" name="id" onfocusout="CheckValue()" id="id">
+                        <input type="text" size="20" name="id" id="id" onfocusout="CheckValue()" >
                         (영문소문자/숫자, 4~16자)
                     </div>
                     <label for="id" id="ID_Chk" style="display: none; color: red; font-size: 13px; font-weight: bold;">
@@ -92,7 +92,7 @@
                 <th>휴대전화<span>*</span></th>
                 <td>
                     <div class="phone">
-                        <select name="phone_value">
+                        <select name="phone_value" name="phone" id="phone">
                             <option value="1">010</option>
                             <option value="2">011</option>
                             <option value="3">017</option>
