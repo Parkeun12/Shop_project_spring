@@ -1,14 +1,12 @@
 package com.example.testproject.entity;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
+import jdk.jfr.DataAmount;
 
 @Entity
 public class Log {
-    @Id
-    @GeneratedValue
+    @Id // pk
+    @GeneratedValue(strategy = GenerationType.IDENTITY) // 자동 id 생성
     private Long i_d;
     @Column
     private String Id;
