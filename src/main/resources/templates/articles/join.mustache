@@ -92,16 +92,17 @@
                 <th>휴대전화<span>*</span></th>
                 <td>
                     <div class="phone">
-                        <select name="phone_value">
+                        <select name="phone_value" id="phone_first">
                             <option value="1">010</option>
                             <option value="2">011</option>
                             <option value="3">017</option>
                             <option value="4">015</option>
                         </select>
                         -
-                        <input type="text" size="7" name="phone" id="phone" onfocusout="CheckValue4()">
+                        <input type="text" size="7" name="phone" id="phone2" onfocusout="CheckValue4()">
                         -
-                        <input type="text" size="7" name="phone" id="phone" onfocusout="CheckValue4()">
+                        <input type="text" size="7" name="phone" id="phone3" onfocusout="CheckValue4()">
+                        <input type="hidden" id="totalphone" name="phone" value="">
                     </div>
                     <label for="phone" id="PHONE_Chk" style="display: none; color: red; font-size: 13px; font-weight: bold;">
                         * 필수 입력
@@ -113,14 +114,14 @@
                 <th>이메일<span>*</span></th>
                 <td>
                     <div class="email">
-                        <input type="text" size="15" name="email" id="email" onfocusout="CheckValue5()">
-                        @
-                        <select name="email_domain">
+                        <input type="text" size="15" name="email" id="email" onfocusout="CheckValue5()"><span id="middle" style="color : black;">@</span>
+                        <select name="email_domain" id="user_email_address">
                             <option value="1">직접 입력</option>
                             <option value="2">naver.com</option>
                             <option value="3">google.com</option>
                             <option value="4">hanmail.net</option>
                         </select>
+                        <input type="hidden" id="totalemail" name="email" value="">
                     </div>
                     <label for="email" id="EMAIL_Chk" style="display: none; color: red; font-size: 13px; font-weight: bold;">
                         * 필수 입력
@@ -315,7 +316,19 @@
                 }
 <!--                //휴대전화 미입력-->
                 function CheckValue4() {
-                    let _PASSWORD = document.getElementById("phone").value;
+                    let _PASSWORD = document.getElementById("phone2").value;
+                    let _PASSWORD_Label = document.getElementById("PHONE_Chk");
+
+                    if (_PASSWORD === "" || _PASSWORD == undefined) {
+                        _PASSWORD_Label.style.display = "block";
+                    }
+                    else {
+                        _PASSWORD_Label.style.display = "none";
+                    }
+
+                }
+                function CheckValue4() {
+                    let _PASSWORD = document.getElementById("phone3").value;
                     let _PASSWORD_Label = document.getElementById("PHONE_Chk");
 
                     if (_PASSWORD === "" || _PASSWORD == undefined) {
@@ -350,5 +363,40 @@
           checkbox.checked = selectAll.checked
         })
       }
+    //이메일주소 가져오기
+	$("#email").blur(function(){
+		email();
+	});
+
+	$("#user_email_address").change(function(){
+		email();
+	});
+
+	function email() {
+		const email = $("#user_email").val();
+		const middle = $("#middle").text();
+		const address = $("#user_email_address").val();
+		if(email != "" && address != "") {
+			$("#totalemail").val(email+middle+address);
+		}
+	};
+
+    //전화번호 가져오기
+	$("#phone_first").blur(function(){
+		phone();
+	});
+
+	$("#phone2").change(function(){
+		phone();
+	});
+
+	function phone() {
+		const phone = $("#phone").val();
+		const phone2 = $("#phone2").val();
+		const phone3 = $("#phone3").val();
+		if(phone2 != "" && phone3 != "") {
+			$("#totalphone").val(phone+phone2+phone3);
+		}
+	};
 </script>
 {{>layouts/footer}}
