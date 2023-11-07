@@ -5,21 +5,33 @@ import com.example.testproject.entity.Article;
 public class ArticleForm {
     private String id;
     private String pw;
-    //전송받은 아이디와 비밀번호를 필드에 저장하는 생성자 추가
-    public ArticleForm(String id, String pw) {
-        this.id = id;
-        this.pw = pw;
-    }
-    //데이터를 잘 받았는지 확인할 toString() 메소드 추가
+    private String pw_check;
+    private String name;
+    private String phone;
+    private String email;
+
     @Override
     public String toString() {
         return "ArticleForm{" +
                 "id='" + id + '\'' +
                 ", pw='" + pw + '\'' +
+                ", pw_check='" + pw_check + '\'' +
+                ", name='" + name + '\'' +
+                ", phone='" + phone + '\'' +
+                ", email='" + email + '\'' +
                 '}';
+    }
+    //전송받은 아이디,비번 등을 필드에 저장하는 생성자 추가
+    public ArticleForm(String id, String pw, String pw_check, String name, String phone, String email) {
+        this.id = id;
+        this.pw = pw;
+        this.pw_check = pw_check;
+        this.name = name;
+        this.phone = phone;
+        this.email = email;
     }
 
     public Article toEntity() {
-        return new Article(null, id, pw);
+        return new Article(null, id, pw, pw_check, name, phone, email);
     }
 }
