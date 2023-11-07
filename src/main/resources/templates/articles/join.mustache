@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="/css/mainpage.css" rel="stylesheet" type="text/css">
     <link href="/css/side.css" rel="stylesheet" type="text/css">
-<!--    회원가입 css 연결-->
+    <!--    회원가입 css 연결-->
     <link href="/css/join.css" rel="stylesheet" type="text/css">
     <title>join</title>
     <script src="/js/jquery-3.7.0.min.js"></script>
@@ -30,7 +30,7 @@
     <div class="clear"></div>
 </header>
 <section>
-{{>layouts/leftside}}
+    {{>layouts/leftside}}
     <!-- 회원가입 폼 -->
 
     <div class="h3">
@@ -42,7 +42,7 @@
                 <th>아이디<span>*</span></th>
                 <td>
                     <div class="id">
-                        <input type="text" size="20" name="id" id="id" onfocusout="CheckValue()" >
+                        <input type="text" size="20" name="id" onfocusout="CheckValue()" id="id">
                         (영문소문자/숫자, 4~16자)
                     </div>
                     <label for="id" id="ID_Chk" style="display: none; color: red; font-size: 13px; font-weight: bold;">
@@ -92,16 +92,17 @@
                 <th>휴대전화<span>*</span></th>
                 <td>
                     <div class="phone">
-                        <select name="phone_value" name="phone" id="phone">
+                        <select name="phone_value" id="phone_first">
                             <option value="1">010</option>
                             <option value="2">011</option>
                             <option value="3">017</option>
                             <option value="4">015</option>
                         </select>
                         -
-                        <input type="text" size="7" name="phone" id="phone" onfocusout="CheckValue4()">
+                        <input type="text" size="7" name="phone" id="phone2" onfocusout="CheckValue4()">
                         -
-                        <input type="text" size="7" name="phone" id="phone" onfocusout="CheckValue4()">
+                        <input type="text" size="7" name="phone" id="phone3" onfocusout="CheckValue4()">
+                        <input type="hidden" id="totalphone" name="phone" value="">
                     </div>
                     <label for="phone" id="PHONE_Chk" style="display: none; color: red; font-size: 13px; font-weight: bold;">
                         * 필수 입력
@@ -113,14 +114,14 @@
                 <th>이메일<span>*</span></th>
                 <td>
                     <div class="email">
-                        <input type="text" size="15" name="email" id="email" onfocusout="CheckValue5()">
-                        @
-                        <select name="email_domain">
+                        <input type="text" size="15" name="email" id="email" onfocusout="CheckValue5()"><span id="middle" style="color : black;">@</span>
+                        <select name="email_domain" id="user_email_address">
                             <option value="1">직접 입력</option>
                             <option value="2">naver.com</option>
                             <option value="3">google.com</option>
                             <option value="4">hanmail.net</option>
                         </select>
+                        <input type="hidden" id="totalemail" name="email" value="">
                     </div>
                     <label for="email" id="EMAIL_Chk" style="display: none; color: red; font-size: 13px; font-weight: bold;">
                         * 필수 입력
@@ -257,98 +258,145 @@
             </li>
         </ul>
     </form>
-<script>
-<!--    미입력 후 다음 단계 진행 시 오류-->
-<!--        아이디 미입력-->
-        function CheckValue() {
-                    let _ID = document.getElementById("id").value;
-                    let ID_Label = document.getElementById("ID_Chk");
+    <script>
+        <!--    미입력 후 다음 단계 진행 시 오류-->
+        <!--        아이디 미입력-->
+                function CheckValue() {
+                            let _ID = document.getElementById("id").value;
+                            let ID_Label = document.getElementById("ID_Chk");
 
-                    if (_ID === "" || _ID == undefined) {
-                        ID_Label.style.display = "inline-block";
-                        document.getElementById("id").style.border = "1px solid red";
-                    }
-                    else {
-                        ID_Label.style.display = "none";
-                    }
+                            if (_ID === "" || _ID == undefined) {
+                                ID_Label.style.display = "inline-block";
+                                document.getElementById("id").style.border = "1px solid red";
+                            }
+                            else {
+                                ID_Label.style.display = "none";
+                            }
+                        }
+        <!--                //비밀번호 미입력-->
+                        function CheckValue1() {
+                            let _PASSWORD = document.getElementById("pw").value;
+                            let _PASSWORD_Label = document.getElementById("PASSWORD_Chk");
+
+                            if (_PASSWORD === "" || _PASSWORD == undefined) {
+                                _PASSWORD_Label.style.display = "block";
+                                document.getElementById("pw").style.border = "1px solid red";
+                            }
+                            else {
+                                _PASSWORD_Label.style.display = "none";
+                            }
+                        }
+                        //비밀번호 확인 미입력
+                        function CheckValue2() {
+                            let _PASSWORD = document.getElementById("pw_check").value;
+                            let _PASSWORD_Label = document.getElementById("PASSWORD1_Chk");
+
+                            if (_PASSWORD === "" || _PASSWORD == undefined) {
+                                _PASSWORD_Label.style.display = "block";
+                                document.getElementById("pw_check").style.border = "1px solid red";
+                            }
+                            else {
+                                _PASSWORD_Label.style.display = "none";
+                            }
+
+                        }
+        <!--                //이름 미입력-->
+                        function CheckValue3() {
+                            let _PASSWORD = document.getElementById("name").value;
+                            let _PASSWORD_Label = document.getElementById("NAME_Chk");
+
+                            if (_PASSWORD === "" || _PASSWORD == undefined) {
+                                _PASSWORD_Label.style.display = "block";
+                                document.getElementById("name").style.border = "1px solid red";
+                            }
+                            else {
+                                _PASSWORD_Label.style.display = "none";
+                            }
+
+                        }
+        <!--                //휴대전화 미입력-->
+                        function CheckValue4() {
+                            let _PASSWORD = document.getElementById("phone2").value;
+                            let _PASSWORD_Label = document.getElementById("PHONE_Chk");
+
+                            if (_PASSWORD === "" || _PASSWORD == undefined) {
+                                _PASSWORD_Label.style.display = "block";
+                            }
+                            else {
+                                _PASSWORD_Label.style.display = "none";
+                            }
+
+                        }
+                        function CheckValue4() {
+                            let _PASSWORD = document.getElementById("phone3").value;
+                            let _PASSWORD_Label = document.getElementById("PHONE_Chk");
+
+                            if (_PASSWORD === "" || _PASSWORD == undefined) {
+                                _PASSWORD_Label.style.display = "block";
+                            }
+                            else {
+                                _PASSWORD_Label.style.display = "none";
+                            }
+
+                        }
+        <!--                //이메일 미입력-->
+                        function CheckValue5() {
+                            let _PASSWORD = document.getElementById("email").value;
+                            let _PASSWORD_Label = document.getElementById("EMAIL_Chk");
+
+                            if (_PASSWORD === "" || _PASSWORD == undefined) {
+                                _PASSWORD_Label.style.display = "block";
+                            }
+                            else {
+                                _PASSWORD_Label.style.display = "none";
+                            }
+
+                        }
+
+
+        <!--        //전체 선택-->
+                function selectAll(selectAll)  {
+                const checkboxes
+                  = document.querySelectorAll('input[type="checkbox"]');
+
+                checkboxes.forEach((checkbox) => {
+                  checkbox.checked = selectAll.checked
+                })
+              }
+            //이메일주소 가져오기
+            $("#email").blur(function(){
+                email();
+            });
+
+            $("#user_email_address").change(function(){
+                email();
+            });
+
+            function email() {
+                const email = $("#user_email").val();
+                const middle = $("#middle").text();
+                const address = $("#user_email_address").val();
+                if(email != "" && address != "") {
+                    $("#totalemail").val(email+middle+address);
                 }
-<!--                //비밀번호 미입력-->
-                function CheckValue1() {
-                    let _PASSWORD = document.getElementById("pw").value;
-                    let _PASSWORD_Label = document.getElementById("PASSWORD_Chk");
+            };
 
-                    if (_PASSWORD === "" || _PASSWORD == undefined) {
-                        _PASSWORD_Label.style.display = "block";
-                        document.getElementById("pw").style.border = "1px solid red";
-                    }
-                    else {
-                        _PASSWORD_Label.style.display = "none";
-                    }
+            //전화번호 가져오기
+            $("#phone_first").blur(function(){
+                phone();
+            });
+
+            $("#phone2").change(function(){
+                phone();
+            });
+
+            function phone() {
+                const phone = $("#phone").val();
+                const phone2 = $("#phone2").val();
+                const phone3 = $("#phone3").val();
+                if(phone2 != "" && phone3 != "") {
+                    $("#totalphone").val(phone+phone2+phone3);
                 }
-                //비밀번호 확인 미입력
-                function CheckValue2() {
-                    let _PASSWORD = document.getElementById("pw_check").value;
-                    let _PASSWORD_Label = document.getElementById("PASSWORD1_Chk");
-
-                    if (_PASSWORD === "" || _PASSWORD == undefined) {
-                        _PASSWORD_Label.style.display = "block";
-                        document.getElementById("pw_check").style.border = "1px solid red";
-                    }
-                    else {
-                        _PASSWORD_Label.style.display = "none";
-                    }
-
-                }
-<!--                //이름 미입력-->
-                function CheckValue3() {
-                    let _PASSWORD = document.getElementById("name").value;
-                    let _PASSWORD_Label = document.getElementById("NAME_Chk");
-
-                    if (_PASSWORD === "" || _PASSWORD == undefined) {
-                        _PASSWORD_Label.style.display = "block";
-                        document.getElementById("name").style.border = "1px solid red";
-                    }
-                    else {
-                        _PASSWORD_Label.style.display = "none";
-                    }
-
-                }
-<!--                //휴대전화 미입력-->
-                function CheckValue4() {
-                    let _PASSWORD = document.getElementById("phone").value;
-                    let _PASSWORD_Label = document.getElementById("PHONE_Chk");
-
-                    if (_PASSWORD === "" || _PASSWORD == undefined) {
-                        _PASSWORD_Label.style.display = "block";
-                    }
-                    else {
-                        _PASSWORD_Label.style.display = "none";
-                    }
-
-                }
-<!--                //이메일 미입력-->
-                function CheckValue5() {
-                    let _PASSWORD = document.getElementById("email").value;
-                    let _PASSWORD_Label = document.getElementById("EMAIL_Chk");
-
-                    if (_PASSWORD === "" || _PASSWORD == undefined) {
-                        _PASSWORD_Label.style.display = "block";
-                    }
-                    else {
-                        _PASSWORD_Label.style.display = "none";
-                    }
-
-                }
-
-
-<!--        //전체 선택-->
-        function selectAll(selectAll)  {
-        const checkboxes
-          = document.querySelectorAll('input[type="checkbox"]');
-
-        checkboxes.forEach((checkbox) => {
-          checkbox.checked = selectAll.checked
-        })
-      }
-</script>
+            };
+    </script>
 {{>layouts/footer}}
