@@ -1,30 +1,30 @@
 package com.example.testproject.controller;
 
-import com.example.testproject.dto.ArticleForm;
-import com.example.testproject.entity.Article;
-import com.example.testproject.repository.ArticleRepository;
+import com.example.testproject.dto.JoinForm;
+import com.example.testproject.entity.Join;
+import com.example.testproject.repository.JoinRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 
 @Controller
-public class FirstController {
+public class JoinController {
     @Autowired
-    private ArticleRepository articleRepository;
+    private JoinRepository joinRepository;
 
     @GetMapping("/articles/join")
     public String niceToMeetYou(){
         return "/articles/join";
     }
     @PostMapping("/articles/create")
-    public String createArticle(ArticleForm form){
+    public String createArticle(JoinForm form){
         System.out.println(form.toString());
         //1.dto를 entity로 변환
-        Article article = form.toEntity();
-        System.out.println(article.toString());
+        Join join = form.toEntity();
+        System.out.println(join.toString());
         //2. repository로 엔티티를 디비에 저장
-        Article saved = articleRepository.save(article);
+        Join saved = joinRepository.save(join);
         System.out.println(saved.toString());
         return "";
     }
