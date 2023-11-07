@@ -3,7 +3,7 @@ package com.example.testproject.entity;
 import jakarta.persistence.*;
 
 @Entity
-public class Join {
+public class Article {
     @Id //pk
     @GeneratedValue(strategy = GenerationType.IDENTITY) // 자동 id 생성
     private Long i_d;
@@ -21,7 +21,7 @@ public class Join {
     private String email;
 
     //Article 생성자 추가
-    public Join(Long i_d, String id, String pw, String pw_check, String name, String phone, String email) {
+    public Article(Long i_d, String id, String pw, String pw_check, String name, String phone, String email) {
         this.i_d = i_d;
         this.id = id;
         this.pw = pw;

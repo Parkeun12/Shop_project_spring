@@ -1,6 +1,5 @@
 package com.example.testproject.dto;
 
-import com.example.testproject.entity.Join;
 import com.example.testproject.entity.Log;
 
 public class LogForm {

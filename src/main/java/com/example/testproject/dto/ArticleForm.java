@@ -1,8 +1,8 @@
 package com.example.testproject.dto;
 
-import com.example.testproject.entity.Join;
+import com.example.testproject.entity.Article;
 
-public class JoinForm {
+public class ArticleForm {
     private String id;
     private String pw;
     private String pw_check;
@@ -22,7 +22,7 @@ public class JoinForm {
                 '}';
     }
     //전송받은 아이디,비번 등을 필드에 저장하는 생성자 추가
-    public JoinForm(String id, String pw, String pw_check, String name, String phone, String email) {
+    public ArticleForm(String id, String pw, String pw_check, String name, String phone, String email) {
         this.id = id;
         this.pw = pw;
         this.pw_check = pw_check;
@@ -31,7 +31,7 @@ public class JoinForm {
         this.email = email;
     }
 
-    public Join toEntity() {
-        return new Join(null, id, pw, pw_check, name, phone, email);
+    public Article toEntity() {
+        return new Article(null, id, pw, pw_check, name, phone, email);
     }
 }
