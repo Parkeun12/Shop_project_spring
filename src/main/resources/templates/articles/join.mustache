@@ -92,18 +92,18 @@
                 <th>휴대전화<span>*</span></th>
                 <td>
                     <div class="phone">
-                        <select name="phone_value" id="phone_first" required>
-                            <option value="010">010</option>
-                            <option value="011">011</option>
-                            <option value="017">017</option>
-                            <option value="015">015</option>
+                        <select name="phone_value" id="phone_first">
+                            <option value="1">010</option>
+                            <option value="2">011</option>
+                            <option value="3">017</option>
+                            <option value="4">015</option>
                         </select>
                         -
                         <input type="text" size="7" name="phone" id="phone2" onfocusout="CheckValue4()">
                         -
                         <input type="text" size="7" name="phone" id="phone3" onfocusout="CheckValue4()">
+                        <input type="hidden" id="totalphone" name="phone" value="">
                     </div>
-                    <input type="hidden" id="totalphone" name="phone" value="">
                     <label for="phone" id="PHONE_Chk" style="display: none; color: red; font-size: 13px; font-weight: bold;">
                         * 필수 입력
                     </label>
@@ -114,12 +114,12 @@
                 <th>이메일<span>*</span></th>
                 <td>
                     <div class="email">
-                        <input type="text" size="15" name="email" id="user_email" onfocusout="CheckValue5()"><span id="middle" style="color : black;">@</span>
+                        <input type="text" size="15" name="email" id="email" onfocusout="CheckValue5()"><span id="middle" style="color : black;">@</span>
                         <select name="email_domain" id="user_email_address">
-                            <option value="">직접 입력</option>
-                            <option value="naver.com">naver.com</option>
-                            <option value="google.com">google.com</option>
-                            <option value="hanmail.net">hanmail.net</option>
+                            <option value="1">직접 입력</option>
+                            <option value="2">naver.com</option>
+                            <option value="3">google.com</option>
+                            <option value="4">hanmail.net</option>
                         </select>
                         <input type="hidden" id="totalemail" name="email" value="">
                     </div>
@@ -382,20 +382,20 @@
             };
 
             //전화번호 가져오기
-            $("#phone").blur(function(){
+            $("#phone_first").blur(function(){
                 phone();
             });
 
-            $("#phone3").change(function(){
+            $("#phone2").change(function(){
                 phone();
             });
 
             function phone() {
-                const phone = $("#phone_first").text();
+                const phone = $("#phone").val();
                 const phone2 = $("#phone2").val();
                 const phone3 = $("#phone3").val();
-                if(phone != "" && phone3 != "") {
-                    $("#totalphone").text(phone+phone2+phone3);
+                if(phone2 != "" && phone3 != "") {
+                    $("#totalphone").val(phone+phone2+phone3);
                 }
             };
     </script>
