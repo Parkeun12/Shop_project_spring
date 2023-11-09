@@ -116,10 +116,17 @@
                     <div class="email">
                         <input type="text" size="15" name="email" id="email" onfocusout="CheckValue5()"><span id="middle" style="color : black;">@</span>
                         <select name="email_domain" id="user_email_address">
+<<<<<<< HEAD
                             <option value="">직접 입력</option>
                             <option value="naver.com">naver.com</option>
                             <option value="google.com">google.com</option>
                             <option value="hanmail.net">hanmail.net</option>
+=======
+                            <option value="1">직접 입력</option>
+                            <option value="2">naver.com</option>
+                            <option value="3">google.com</option>
+                            <option value="4">hanmail.net</option>
+>>>>>>> main
                         </select>
                         <input type="hidden" id="totalemail" name="email" value="">
                     </div>
@@ -397,6 +404,122 @@
                 if(phone2 != "" && phone3 != "") {
                     $("#totalphone").val(phone+phone2+phone3);
                 }
+<<<<<<< HEAD
             };
     </script>
+=======
+                //비밀번호 확인 미입력
+                function CheckValue2() {
+                    let _PASSWORD = document.getElementById("pw_check").value;
+                    let _PASSWORD_Label = document.getElementById("PASSWORD1_Chk");
+
+                    if (_PASSWORD === "" || _PASSWORD == undefined) {
+                        _PASSWORD_Label.style.display = "block";
+                        document.getElementById("pw_check").style.border = "1px solid red";
+                    }
+                    else {
+                        _PASSWORD_Label.style.display = "none";
+                    }
+
+                }
+<!--                //이름 미입력-->
+                function CheckValue3() {
+                    let _PASSWORD = document.getElementById("name").value;
+                    let _PASSWORD_Label = document.getElementById("NAME_Chk");
+
+                    if (_PASSWORD === "" || _PASSWORD == undefined) {
+                        _PASSWORD_Label.style.display = "block";
+                        document.getElementById("name").style.border = "1px solid red";
+                    }
+                    else {
+                        _PASSWORD_Label.style.display = "none";
+                    }
+
+                }
+<!--                //휴대전화 미입력-->
+                function CheckValue4() {
+                    let _PASSWORD = document.getElementById("phone2").value;
+                    let _PASSWORD_Label = document.getElementById("PHONE_Chk");
+
+                    if (_PASSWORD === "" || _PASSWORD == undefined) {
+                        _PASSWORD_Label.style.display = "block";
+                    }
+                    else {
+                        _PASSWORD_Label.style.display = "none";
+                    }
+
+                }
+                function CheckValue4() {
+                    let _PASSWORD = document.getElementById("phone3").value;
+                    let _PASSWORD_Label = document.getElementById("PHONE_Chk");
+
+                    if (_PASSWORD === "" || _PASSWORD == undefined) {
+                        _PASSWORD_Label.style.display = "block";
+                    }
+                    else {
+                        _PASSWORD_Label.style.display = "none";
+                    }
+
+                }
+<!--                //이메일 미입력-->
+                function CheckValue5() {
+                    let _PASSWORD = document.getElementById("email").value;
+                    let _PASSWORD_Label = document.getElementById("EMAIL_Chk");
+
+                    if (_PASSWORD === "" || _PASSWORD == undefined) {
+                        _PASSWORD_Label.style.display = "block";
+                    }
+                    else {
+                        _PASSWORD_Label.style.display = "none";
+                    }
+
+                }
+
+
+<!--        //전체 선택-->
+        function selectAll(selectAll)  {
+        const checkboxes
+          = document.querySelectorAll('input[type="checkbox"]');
+
+        checkboxes.forEach((checkbox) => {
+          checkbox.checked = selectAll.checked
+        })
+      }
+    //이메일주소 가져오기
+	$("#email").blur(function(){
+		email();
+	});
+
+	$("#user_email_address").change(function(){
+		email();
+	});
+
+	function email() {
+		const email = $("#user_email").val();
+		const middle = $("#middle").text();
+		const address = $("#user_email_address").val();
+		if(email != "" && address != "") {
+			$("#totalemail").val(email+middle+address);
+		}
+	};
+
+    //전화번호 가져오기
+	$("#phone_first").blur(function(){
+		phone();
+	});
+
+	$("#phone2").change(function(){
+		phone();
+	});
+
+	function phone() {
+		const phone = $("#phone").val();
+		const phone2 = $("#phone2").val();
+		const phone3 = $("#phone3").val();
+		if(phone2 != "" && phone3 != "") {
+			$("#totalphone").val(phone+phone2+phone3);
+		}
+	};
+</script>
+>>>>>>> main
 {{>layouts/footer}}
