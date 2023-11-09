@@ -1,0 +1,23 @@
+.ProductInput{
+    width:1000px;
+    margin-top:150px;
+}
+.ProductInput h2{
+    margin-bottom:20px;
+}
+.ProductInput table{
+    border-collapse: collapse;
+}
+.ProductInput th{
+    width:200px;
+}
+.ProductInput td{
+    width:800px;
+    text-align:center;
+}
+.ProductInput td input[type=text]{
+    width:700px;
+}
+.ProductInput th, .ProductInput td{
+    padding:10px 0;
+}
