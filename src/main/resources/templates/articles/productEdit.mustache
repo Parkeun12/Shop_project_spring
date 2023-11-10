@@ -5,11 +5,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="/css/mainpage.css" rel="stylesheet" type="text/css">
-    <link href="/css/adminProductList.css" rel="stylesheet" type="text/css">
+    <link href="/css/adminProduct.css" rel="stylesheet" type="text/css">
     <link href="/css/side.css" rel="stylesheet" type="text/css">
     <title>index</title>
     <script src="/js/jquery-3.7.0.min.js"></script>
-    <script src="/js/adminProductList.js"></script>
 </head>
 
 <body>
@@ -43,62 +42,66 @@
     <article class="right_main_view">
         <!--메인 이미지섹션-->
         <div class="mainImg">
-            <div class="productList">
-                <h3>Product List</h3>
-                <form>
+            <div>
+                <form class="container" action="/product/update" method="post">
+                    <input value="{{product.productNum}}" type="hidden" name="productNum">
+                    <h2>상품등록</h2>
                     <table border="1">
                         <tr>
-                            <th name="num">
-                                번호
-                            </th>
-                            <th name="name">
+                            <th>
                                 상품명
                             </th>
-                            <th name="price">
+                            <td>
+                                <input value="{{product.productName}}" type="text" name="productName" id="productName">
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>
                                 가격
                             </th>
-                            <th name="img">
-                                이미지
-                            </th>
-                            <th name="txt">
-                                상품정보
-                            </th>
-                            <th name="color">
+                            <td>
+                                <input value="{{product.productPrice}}" type="text" name="productPrice" id="productPrice">
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>
                                 색상
                             </th>
-                            <th name="size">
+                            <td>
+                                <input value="{{product.productColor}}" type="text" name="productColor" id="productColor">
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>
                                 사이즈
                             </th>
+                            <td>
+                                <input value="{{product.productSize}}" type="text" name="productSize" id="productSize">
+                            </td>
                         </tr>
-                        {{#productList}}
                         <tr>
-                            <td name="num">
-                                {{productNum}}
-                            </td>
-                            <td name="name">
-                                <a href="/product/{{productNum}}">
-                                {{productName}}
-                                </a>
-                            </td>
-                            <td name="price">
-                                {{productPrice}}
-                            </td>
-                            <td name="img">
-                                {{productImg}}
-                            </td>
-                            <td name="txt">
-                                {{productTxt}}
-                            </td>
-                            <td name="color">
-                                {{productColor}}
-                            </td>
-                            <td name="size">
-                                {{productSize}}
+                            <th>
+                                상품설명
+                            </th>
+                            <td>
+                                <input value="{{product.productTxt}}" type="text" name="productTxt" id="productTxt">
                             </td>
                         </tr>
-                        {{/productList}}
+                        <tr>
+                            <th>
+                                상품이미지
+                            </th>
+                            <td>
+                                <input value="{{product.productImg}}" type="file" name="productImg">
+                            </td>
+                        </tr>
+                        <tr>
+                            <th colspan="2">
+                                <input type="submit" value="수정하기">
+                                <a href="/product/{{product.productNum}}">취소하기</a>
+                            </th>
+                        </tr>
                     </table>
-                        <a href="/product/new">상품 추가</a>
                 </form>
             </div>
         </div>

@@ -10,7 +10,7 @@ import lombok.ToString;
 public class User_join {
     @Id //pk
     @GeneratedValue(strategy = GenerationType.IDENTITY) // 자동 id 생성
-    private Long i_d;
+    private Long userJoinId;
 
     @Column(name = "users_id")
     private String id;
