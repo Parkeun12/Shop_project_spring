@@ -4,12 +4,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="css/mainpage.css" rel="stylesheet" type="text/css">
-    <link href="css/adminProductList.css" rel="stylesheet" type="text/css">
-    <link href="css/side.css" rel="stylesheet" type="text/css">
+    <link href="/css/mainpage.css" rel="stylesheet" type="text/css">
+    <link href="/css/adminProductList.css" rel="stylesheet" type="text/css">
+    <link href="/css/side.css" rel="stylesheet" type="text/css">
     <title>index</title>
-    <script src="js/jquery-3.7.0.min.js"></script>
-    <script src="js/adminProductList.js"></script>
+    <script src="/js/jquery-3.7.0.min.js"></script>
+    <script src="/js/adminProductList.js"></script>
 </head>
 
 <body>
@@ -17,7 +17,7 @@
     <!--왼쪽사이드-->
     <article class="left_side">
         <div class="logo">
-            <img src="images/mainLogo.png" alt="mainLogo">
+            <img src="/img/mainLogo.png" alt="mainLogo">
         </div>
         <!-- 사이드 메뉴 네비 -->
         <nav class="menu">
@@ -70,32 +70,34 @@
                                 사이즈
                             </th>
                         </tr>
+                    {{#product}}
                         <tr>
                             <td name="num">
-                                1[상품번호]
+                                {{productNum}}
                             </td>
                             <td name="name">
-                                abcde[상품명]
+                                {{productName}}
                             </td>
                             <td name="price">
-                                10,000원[가격]
+                                {{productPrice}}
                             </td>
                             <td name="img">
-                                abced.jpg[이미지]
+                                {{productImg}}
                             </td>
                             <td name="txt">
-                                모든핏에 어울리는 핏[상품정보]
+                                {{productTxt}}
                             </td>
                             <td name="color">
-                                갈색[색상]
+                                {{productColor}}
                             </td>
                             <td name="size">
-                                100[사이즈]
+                                {{productSize}}
                             </td>
                         </tr>
+                    {{/product}}
                     </table>
-                    <button tpye="button">수정</button>
-                    <button tpye="reset">삭제</button>
+                    <a href="/product/{{product.productNum}}/edit" class="btn btn-primary" >수정하기</a>
+                    <a href="/product/{{product.productNum}}/delete" class="btn btn-danger" >삭제하기</a>
                 </form>
             </div>
         </div>
