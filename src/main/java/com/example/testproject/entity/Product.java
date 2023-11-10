@@ -12,23 +12,23 @@ import lombok.*;
 public class Product {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long product_num;
+    private Long productNum;
 
-    @Column
-    private String product_name;
+    @Column(name = "product_name")
+    private String productName;
 
-    @Column
-    private int product_price;
+    @Column(name = "product_price")
+    private int productPrice;
 
-    @Column
-    private String product_img;
+    @Column(name = "product_img")
+    private String productImg;
 
-    @Column
-    private String product_txt;
+    @Column(name = "product_txt")
+    private String productTxt;
 
-    @Column
-    private String product_color;
+    @Column(name = "product_color")
+    private String productColor;
 
-    @Column
-    private String product_size;
+    @Column(name = "product_size")
+    private String productSize;
 }
