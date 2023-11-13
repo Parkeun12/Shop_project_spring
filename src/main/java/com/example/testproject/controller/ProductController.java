@@ -73,7 +73,7 @@ public class ProductController {
         return "articles/productList";
     }
 
-//    ---------------------------------------------------------------------------
+    //    ---------------------------------------------------------------------------
     //수정하기
     @GetMapping("/product/{productNum}/edit")
     public String edit(@PathVariable Long productNum, Model model)
