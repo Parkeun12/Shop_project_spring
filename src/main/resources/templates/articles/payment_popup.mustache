@@ -4,6 +4,8 @@
 <head>
     <meta charset="UTF-8">
     <title>Document</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
     <style>
         * {
             margin: 0 auto;
@@ -56,7 +58,7 @@
 
         .product_name {
             position: relative;
-            top: -50px;
+            top: -90px;
             font-weight: bold;
             font-size: 13px;
             /* display: inline-block;
@@ -65,22 +67,8 @@
 
         .option_title {
             padding: 10px;
-        }
-
-        .option_select1 {
-            /* display: inline-block; */
-            position: relative;
-            bottom: 32px;
-            width: 250px;
-            height: 25px;
-            font-size: 11px;
-            font-weight: 400;
-        }
-
-        .option_text1 {
-            font-size: 11px;
-            position: relative;
-            bottom: 38px;
+            text-align: center;
+            font-weight: bold;
         }
 
         .option_select2 {
@@ -115,24 +103,48 @@
             font-weight: bold;
             line-height: 21px;
             font-size: 13px;
-            width: 100px;
+            /* width: 100px; */
             /* right: 135px; */
-            float: left;
+            /* float: left; */
         }
 
         .op_border {
             border-top: 1px solid #e5e5e5;
         }
 
-        .op_product span {
+        .op_border span {
+            display: inline-block;
+            position: relative;
+            right: -15px;
+            color: #919191;
+            font-size: 11px;
+        }
+
+        .label {
+            display: inline-block;
             color: #919191;
             font-size: 11px;
         }
 
         .count {
             position: relative;
-            top: 20px;
-            left: 150px;
+            top: -35px;
+            left: 250px;
+        }
+
+        input[type=text] {
+            width: 15px;
+            height: 15px;
+            text-align: center;
+        }
+
+        .count button {
+            background: #ccc;
+            border: none;
+            box-sizing: border-box;
+            width: 20px;
+            height: 20px;
+            cursor: pointer;
         }
 
         .box {
@@ -140,7 +152,7 @@
             height: 15px;
             float: right;
             position: relative;
-            top: 2px;
+            top: -55px;
             right: 10px;
             padding: 0;
             text-align: center;
@@ -166,7 +178,7 @@
             color: white;
         }
 
-        .or_btn{
+        .or_btn {
             margin-top: 160px;
             margin-left: 120px;
         }
@@ -176,51 +188,40 @@
 <body>
 
 <div class="option_title">
-    옵션 선택
+    - 옵션 선택 -
 </div>
-
-<div class="img">
-    <img src="/img/TOP/TopImg2.jpg">
-</div>
-
-<div class="img_option">
-    <div class="product_name">
-        상품명
+{{#paymentPopup}}
+    <div class="img">
+        <img src="/img/BOTTOM/{{productImg}}">
     </div>
 
-    <div class="option_text1">
-        색상
+    <div class="img_option">
+        <div class="product_name">
+            {{productName}}
+        </div>
+
+        <div class="option_text2">
+            사이즈
+        </div>
+
+        <select class="option_select2" name="size_select" id="size_select">
+            <option>[필수] 옵션을 선택해주세요.</option>
+            <option>S</option>
+            <option>M</option>
+            <option>L</option>
+        </select>
     </div>
 
-    <select class="option_select1">
-        <option>[필수] 옵션을 선택해주세요.</option>
-        <option>BLACK</option>
-        <option>WHITE</option>
-    </select>
-
-    <div class="option_text2">
-        사이즈
-    </div>
-
-    <select class="option_select2">
-        <option>[필수] 옵션을 선택해주세요.</option>
-        <option>S</option>
-        <option>M</option>
-        <option>L</option>
-    </select>
-</div>
-
-<div class="option_all">
+    <div class="option_all">
     <tr class="option_product">
         <td>
             <div class="op_border">
                 <input type="hidden" class="option_box">
                 <p class="op_product">
-                    상품명
-                    <br>
-                    -
-                    <span>BLACK S</span>
+                    {{productName}}
                 </p>
+                <span>- {{productColor}}</span>
+                <p class="label" id="label"> <span></span></p>
             </div>
         </td>
         <td>
@@ -237,7 +238,8 @@
                 x
             </button>
         </td>
-    </tr>
+{{/paymentPopup}}
+</tr>
 </div>
 
 <div class="or_btn">
@@ -246,13 +248,39 @@
 
 <script>
     function moveClose() {
-        opener.location.href = "/articles/order_payment"
+        opener.location.href = "order_payment.html"
         self.close();
     }
 
     function none() {
         document.querySelector(".option_all").style.display = "none";
     }
+
+    function moveClose() {
+        opener.location.href = "order_payment.html"
+        self.close();
+    }
+
+    let quantity = $(".quantity_input").val();
+
+    $(".plus_btn").on("click", function () {
+        $(".quantity_input").val(++quantity);
+    });
+
+    $(".minus_btn").on("click", function () {
+        if (quantity > 1) {
+            $(".quantity_input").val(--quantity);
+        }
+    });
+
+
+    let select = document.getElementById('size_select');
+
+
+    select.addEventListener('change', function () {
+        document.getElementById('label').children[0].innerHTML = select.options[select.selectedIndex].label;
+    })
+
 </script>
 
 </body>
