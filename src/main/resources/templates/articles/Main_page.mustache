@@ -1,6 +1,37 @@
-{{>layouts/header}}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="/css/mainPage.css" rel="stylesheet" type="text/css">
+    <!--    <link href="/css/mainpage.css" rel="stylesheet" type="text/css">-->
+    <link href="/css/side.css" rel="stylesheet" type="text/css">
+    <title>index</title>
+    <script src="/js/jquery-3.7.0.min.js"></script>
+</head>
+
+<body>
+<header>
+    <nav class="icon_side">
+        <div>
+            <div class="icon_member">
+                <a href="#">
+                    <img src="/img/memberW.png" alt="member">
+                </a>
+            </div>
+            <div class="icon_basket">
+                <a href="#">
+                    <!--주석-->
+                    <img src="/img/basketW.png" alt="basket">
+                </a>
+            </div>
+        </div>
+    </nav>
+    <div class="clear"></div>
+</header>
 <section>
-{{>layouts/leftside}}
+    {{>layouts/leftside}}
     <join class="right_main_view">
         <!--메인 이미지섹션-->
         <div class="mainImg">
@@ -11,108 +42,41 @@
         <!--상품 섹션-->
         <div class="product">
             <ul class="product_list">
-                <li class="list">
-                    <div class="container">
-                        <div id="snap">
-                            <div class="img_text">
-                                <p>상품명: 1번 상품</p>
-                            </div>
-                            <div class="img_text">
-                                <p>사이즈: S / M / L</p>
-                            </div>
-                            <div class="img_text">
-                                <p>색상: WHITE / BLACK / NAVY</p>
-                            </div>
-                            <div class="img_text">
-                                <p>가격: 23,000원</p>
-                            </div>
+                {{#mainProduct}}
+                    <li class="list">
+                        <div class="container">
+                            <div id="snap">
+                                <div class="img_text">
+                                    <p>상품명: {{productName}}</p>
+                                </div>
+                                <div class="img_text">
+                                    <p>색상: {{productColor}}</p>
+                                </div>
+                                <div class="img_text">
+                                    <p>가격: {{productPrice}}원</p>
+                                </div>
 
-                            <div class="product_basket_button">
-                                <a class="product_basket" onclick="showPopup();">
-                                    <img src="/img/basket.png" alt="">
-                                </a>
-                                <a onclick="showPopup1();">
-                                    <div class="product_button">
-                                        <p class="payment">바로구매</p>
-                                    </div>
-                                </a>
+                                <div class="product_basket_button">
+                                    <a class="product_basket" onclick="showPopup();">
+                                        <img src="/img/basket.png" alt="">
+                                        <!-- <img src="images/basket.png" alt=""> -->
+                                    </a>
+                                    <a onclick="showPopup1();">
+                                        <div class="product_button">
+                                            <p class="payment">바로구매</p>
+                                        </div>
+                                    </a>
+                                </div>
                             </div>
+                            <a href="#">
+                                <!--                        <a href="productDetailsMore.html">-->
+                                <div class="product_img">
+                                    <img src="/img/BOTTOM/{{productImg}}" alt="test1" style="width: 354px; height: 540px;">
+                                </div>
+                            </a>
                         </div>
-                        <a href="/articles/product_detail">
-                            <div class="product_img">
-                                <img src="/img/test_img.png" alt="test1">
-                            </div>
-                        </a>
-                    </div>
-                </li>
-                <li class="list">
-                    <div class="container">
-                        <div id="snap">
-                            <div class="img_text">
-                                <p>상품명: 1번 상품</p>
-                            </div>
-                            <div class="img_text">
-                                <p>사이즈: S / M / L</p>
-                            </div>
-                            <div class="img_text">
-                                <p>색상: WHITE / BLACK / NAVY</p>
-                            </div>
-                            <div class="img_text">
-                                <p>가격: 23,000원</p>
-                            </div>
-
-                            <div class="product_basket_button">
-                                <a class="product_basket" onclick="showPopup();">
-                                    <img src="/img/basket.png" alt="">
-                                </a>
-                                <a onclick="showPopup1();">
-                                    <div class="product_button">
-                                        <p class="payment">바로구매</p>
-                                    </div>
-                                </a>
-                            </div>
-                        </div>
-                        <a href="/articles/product_detail">
-                            <div class="product_img">
-                                <img src="/img/test_img.png" alt="test1">
-                            </div>
-                        </a>
-                    </div>
-                </li>
-                <li class="list">
-                    <div class="container">
-                        <div id="snap">
-                            <div class="img_text">
-                                <p>상품명: 1번 상품</p>
-                            </div>
-                            <div class="img_text">
-                                <p>사이즈: S / M / L</p>
-                            </div>
-                            <div class="img_text">
-                                <p>색상: WHITE / BLACK / NAVY</p>
-                            </div>
-                            <div class="img_text">
-                                <p>가격: 23,000원</p>
-                            </div>
-
-                            <div class="product_basket_button">
-                                <a class="product_basket" onclick="showPopup();">
-                                    <img src="/img/basket.png" alt="">
-                                </a>
-                                <a onclick="showPopup1();">
-                                    <div class="product_button">
-                                        <p class="payment">바로구매</p>
-                                    </div>
-                                </a>
-                            </div>
-                        </div>
-                        <a href="/articles/product_detail">
-                            <div class="product_img">
-                                <img src="/img/test_img.png" alt="test1">
-                            </div>
-                        </a>
-                    </div>
-                </li>
+                    </li>
+                {{/mainProduct}}
             </ul>
         </div>
         <div id="footer">
@@ -126,23 +90,24 @@
         </div>
     </join>
 </section>
-        <script>
-            jQuery(document).ready(function () {
-                $('.navi>li').mouseover(function () {
-                    $(this).find('.submenu').stop().slideDown(500);
-                }).mouseout(function () {
-                    $(this).find('.submenu').stop().slideUp(500);
-                });
-            });
+<script>
+    jQuery(document).ready(function () {
+        $('.navi>li').mouseover(function () {
+            $(this).find('.submenu').stop().slideDown(500);
+        }).mouseout(function () {
+            $(this).find('.submenu').stop().slideUp(500);
+        });
+    });
 
-            function showPopup() {
-                window.open("/articles/cart_popup_1", "장바구니팝업", "width=450, height=200, left=800, top=300");
+    function showPopup() {
+        window.open("/mainshop/zzim_popup", "찜팝업", "width=450, height=200, left=800, top=300");
+    }
+    {{#mainProduct}}
+        function showPopup1() {
+            window.open("/mainshop/payment_popup/{{productNum}}", "바로구매팝업", "width=400, height=450, left=700, top=150");
             }
-
-            function showPopup1() {
-                window.open("/payment_popup", "바로구매팝업", "width=400, height=450, left=700, top=150");
-            }
+    {{/mainProduct}}
         </script>
-        </body>
+</body>
 
-        </html>
+</html>
