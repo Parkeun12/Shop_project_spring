@@ -8,6 +8,7 @@ import lombok.ToString;
 @AllArgsConstructor
 @ToString
 public class ProductForm {
+    private Long productNum;
     private String productName;
     private int productPrice;
     private String productImg;
@@ -16,6 +17,6 @@ public class ProductForm {
     private String productSize;
 
     public Product toEntity(){
-        return new Product(null, productName, productPrice, productImg, productTxt, productColor, productSize);
+        return new Product(productNum, productName, productPrice, productImg, productTxt, productColor, productSize);
     }
 }
