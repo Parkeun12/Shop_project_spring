@@ -3,6 +3,7 @@ package com.example.testproject.controller;
 import com.example.testproject.dto.User_joinForm;
 import com.example.testproject.entity.User_join;
 import com.example.testproject.repository.User_joinRepository;
+import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -15,10 +16,13 @@ import org.springframework.web.bind.annotation.PostMapping;
 //수정
 @Controller
 @Slf4j
+@RequiredArgsConstructor
 public class User_joinController {
 
     @Autowired
     private User_joinRepository user_joinRepository;
+
+    private final AuthService authService;
 
     @GetMapping("/articles/join")
     public String joinPage(){
@@ -43,4 +47,7 @@ public class User_joinController {
         model.addAttribute("user_joinEntity", user_joinEntity);
         return "articles/show";
     }
+
+
+
 }
