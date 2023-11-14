@@ -4,8 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="/css/mainPage.css" rel="stylesheet" type="text/css">
-    <!--    <link href="/css/mainpage.css" rel="stylesheet" type="text/css">-->
+    <link href="/css/mains.css" rel="stylesheet" type="text/css">
     <link href="/css/side.css" rel="stylesheet" type="text/css">
     <title>index</title>
     <script src="/js/jquery-3.7.0.min.js"></script>
@@ -61,7 +60,7 @@
                                         <img src="/img/basket.png" alt="">
                                         <!-- <img src="images/basket.png" alt=""> -->
                                     </a>
-                                    <a onclick="showPopup1();">
+                                    <a onclick="window.open('/mainshop/payment_popup/{{productNum}}', '바로구매팝업', 'width=400, height=450, left=700, top=150');">
                                         <div class="product_button">
                                             <p class="payment">바로구매</p>
                                         </div>
@@ -102,12 +101,12 @@
     function showPopup() {
         window.open("/mainshop/zzim_popup", "찜팝업", "width=450, height=200, left=800, top=300");
     }
-    {{#mainProduct}}
-        function showPopup1() {
-            window.open("/mainshop/payment_popup/{{productNum}}", "바로구매팝업", "width=400, height=450, left=700, top=150");
+<!--{{#mainProduct}}
+    function showPopup1() {
+        window.open("/mainshop/payment_popup/{{productNum}}", "바로구매팝업", "width=400, height=450, left=700, top=150");
             }
-    {{/mainProduct}}
-        </script>
+{{/mainProduct}}-->
+</script>
 </body>
 
 </html>
