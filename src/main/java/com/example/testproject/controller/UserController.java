@@ -1,50 +1,68 @@
 package com.example.testproject.controller;
 
-import com.example.testproject.Service.UserService;
 import com.example.testproject.dto.UserFormDto;
-import com.example.testproject.entity.User;
-import jakarta.validation.Valid;
+import com.example.testproject.entity.Users;
+import com.example.testproject.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
 
 
 @Controller
-
-@RequestMapping("/users")
+@Slf4j
 @RequiredArgsConstructor
 public class UserController {
-    private final UserService userService;
-    private PasswordEncoder passwordEncoder;
+//    @Autowired
+//    private UserService userService;
+    private final PasswordEncoder passwordEncoder;
+    @Autowired
+    private UserRepository userRepository;
 
-    @GetMapping(value="/new")
-    public String memberForm(UserFormDto userFormDto, Model model ) {
+    @GetMapping(value="/user/new")
+    public String memberForm(UserFormDto userFormDto, Model model) {
         model.addAttribute("userFormDto", userFormDto);
         return "articles/join";
     }
 
 
-    @PostMapping(value="/new")
-    public String userForm(@Valid UserFormDto userFormDto, BindingResult bindingResult, Model model) {
+//    @PostMapping(value="/user/new")
+//    public String userForm(@Valid UserFormDto userFormDto, BindingResult bindingResult, Model model) {
+//
+//        if(bindingResult.hasErrors()) {
+//            return "articles/join";
+//        }
+//
+//        try {
+//            Users user =Users.createUser(userFormDto, passwordEncoder);
+////            userService.saveUser(user); //임의 주석
+//            System.out.println("@@@@@ 입력한거 저장되는지확인하기" + user);
+//        }catch(IllegalStateException e) {
+//            model.addAttribute("errorMessage", e.getMessage());
+//            return "articles/join";
+//        }
+//
+//        return "redirect:/";
+//    }
 
-        if(bindingResult.hasErrors()) {
-            return "articles/join";
-        }
+    @GetMapping("/user/join")
+    public String joinPage(){
+        return "/articles/join";
+    }
 
-        try {
-            User user = User.createUser(userFormDto, passwordEncoder);
-            userService.saveUser(user);
-            System.out.println("@@@@@ 입력한거 저장되는지확인하기" + user);
-        }catch(IllegalStateException e) {
-            model.addAttribute("errorMessage", e.getMessage());
-            return "articles/join";
-        }
+    @PostMapping("/user/create")
+    public String createJoin(UserFormDto form){
+        log.info(form.toString());
 
-        return "redirect:/";
+        Users user = form.toEntity();
+        log.info(user.toString());
+
+        Users saved = userRepository.save(user);
+        log.info(form.toString());
+        return "";
     }
 }
