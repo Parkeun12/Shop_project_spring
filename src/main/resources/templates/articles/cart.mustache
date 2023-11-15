@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="/css/mainpage.css" rel="stylesheet" type="text/css">
+    <link href="/css/side.css" rel="stylesheet" type="text/css">
+    <!--    회원가입 css 연결-->
+    <link href="/css/cart.css" rel="stylesheet" type="text/css">
+    <title>join</title>
+    <script src="/js/jquery-3.7.0.min.js"></script>
+</head>
+<body>
+<header>
+    <nav class="icon_side">
+        <div>
+            <div class="icon_member">
+                <a href="#">
+                    <img src="/img/memberB.png" alt="member">
+                </a>
+            </div>
+            <div class="icon_basket">
+                <a href="cart.mustache">
+                    <img src="/img/basket.png" alt="basket">
+                </a>
+            </div>
+        </div>
+    </nav>
+    <div class="clear"></div>
+</header>
+<section>
+{{>layouts/leftside}}
+    //장바구니 부분
+
+    <div class="cart">
+        <h3>장바구니</h3>
+        <div class="check"><input type="checkbox" name="checkBox" onclick='selectAll(this)'> 모두 선택</div>
+
+        <div class="row-data">
+            <div class="check2"><input type="checkbox" name="checkBox"></div>
+            <div class="img"><img src="/img/TOP/TopImg2.jpg"></div>
+            <div class="mid-info">
+                <div class="name">
+                    <span>상품명1</span>
+                    <!-- 삭제 버튼 -->
+                    <button class="box" onclick="none()">
+                        x
+                    </button>
+                </div>
+                <!-- 상품 옵션  -->
+                <!-- 옵션변경 팝업 추가 -->
+                <div class="option">
+                    <span>[옵션 : BLACK]</span>
+                    <span><a href="#">옵션변경</a></span><br />
+                </div>
+                <!-- 상품 수량 -->
+                <div class="count">
+              <span>
+                <button class="minus_btn">-</button>
+                <input type="text" class="quantity_input" value="1">
+                <button class="plus_btn">+</button>
+              </span>
+                </div>
+                <!-- 상품 가격 + 배송비 -->
+                <div class="price">
+                    <span>가격 : (원)</span>
+                    <span>배송 : 기본 배송 / 무료</span>
+                </div>
+            </div>
+        </div>
+        <!-- 총 주문 금액과 구매하기 버튼 -->
+        <div class="total">
+            <span>주문 금액</span>
+            <span>0</span>
+            <span>원</span>
+        </div>
+        <div class="order">
+            <a href="order_payment.html"><button>구매하기</button></a>
+        </div>
+    </div>
+
+<script>
+    //메인 사이드 슬라이드
+    jQuery(document).ready(function () {
+      $('.navi>li').mouseover(function () {
+        $(this).find('.submenu').stop().slideDown(500);
+      }).mouseout(function () {
+        $(this).find('.submenu').stop().slideUp(500);
+      });
+    });
+
+    // 상품 전체 선택
+    function selectAll(selectAll) {
+      const checkboxes
+        = document.querySelectorAll('input[type="checkbox"]');
+
+      checkboxes.forEach((checkbox) => {
+        checkbox.checked = selectAll.checked
+      })
+    }
+    //수량 버튼 조작
+    let quantity = $(".quantity_input").val();
+    $(".plus_btn").on("click", function () {
+      $(".quantity_input").val(++quantity);
+    });
+    $(".minus_btn").on("click", function () {
+      if (quantity > 1) {
+        $(".quantity_input").val(--quantity);
+      }
+    });
+    // 상품 삭제 버튼
+    function none() {
+      document.querySelector(".row-data").style.display = "none";
+    }
+</script>
+{{>layouts/footer}}
