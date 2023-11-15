@@ -164,10 +164,6 @@ section .right_main_view .product {
     .product_list {
         min-width: 200px;
     }
-
-    .product_list .list {
-        /* width: calc(33.3% - 10px);  삭제*/
-    }
 }
 
 .product_img {
@@ -182,8 +178,8 @@ section .right_main_view .product {
     font-size: 12px;
     color: #000;
     text-align: left;
-    margin-bottom: -50px;
-    padding: 35px;
+    margin-bottom: -45px;
+    padding: 40px;
 }
 
 #snap {
