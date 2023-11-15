@@ -49,6 +49,7 @@ public class User {
      * 유저 엔티티에 회원을 생성하는 메서드를 만들어서 관리를한다면
      * 코드가 변경되더라도 한 군데만 수정하면 되는 이점이 있다.
      * */
+
     public static User createUser(UserFormDto userFormDto, PasswordEncoder passwordEncoder) {
         User user = new User();
 

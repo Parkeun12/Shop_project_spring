@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org" >
 
 <head>
     <meta charset="UTF-8">
@@ -36,10 +36,10 @@
     <div class="h3">
         <h3>회원 가입</h3>
     </div>
-    <form action="/articles/create" method="post">
+    <form action="/user/new" role="form" method="post" th:object="${userFormDto}">
         <table>
             <tr>
-                <th>아이디<span>*</span></th>
+                <th th:for="id">아이디<span>*</span></th>
                 <td>
                     <div class="id">
                         <input type="text" size="20" name="id" onfocusout="CheckValue()" id="id">
@@ -52,7 +52,7 @@
             </tr>
 
             <tr>
-                <th>비밀번호<span>*</span></th>
+                <th th:for="password">비밀번호<span>*</span></th>
                 <td>
                     <div class="pw">
                         <input type="password" size="20" name="pw" id="pw" onfocusout="CheckValue1()">
@@ -65,7 +65,7 @@
             </tr>
 
             <tr>
-                <th>비밀번호 확인<span>*</span></th>
+                <th th:for="pw_check">비밀번호 확인<span>*</span></th>
                 <td>
                     <div class="pw_1">
                         <input type="password" size="20" name="pw_check" id="pw_check" onfocusout="CheckValue2()">
@@ -77,10 +77,10 @@
             </tr>
 
             <tr>
-                <th>이름<span>*</span></th>
+                <th th:for="name">이름<span>*</span></th>
                 <td>
                     <div class="name">
-                        <input type="text" size="20" name="name" id="name" onfocusout="CheckValue3()">
+                        <input type="text" size="20" name="name" id="name" onfocusout="CheckValue3()" th:field="*{name}">
                     </div>
                     <label for="name" id="NAME_Chk" style="display: none; color: red; font-size: 13px; font-weight: bold;">
                         * 필수 입력
@@ -89,7 +89,7 @@
             </tr>
 
             <tr>
-                <th>휴대전화<span>*</span></th>
+                <th th:for="phone">휴대전화<span>*</span></th>
                 <td>
                     <div class="phone">
                         <select name="phone_value" id="phone_first">
@@ -111,12 +111,12 @@
             </tr>
 
             <tr>
-                <th>이메일<span>*</span></th>
+                <th th:for="email">이메일<span>*</span></th>
                 <td>
                     <div class="email">
                         <input type="text" size="15" name="email" id="email" onfocusout="CheckValue5()"><span id="middle" style="color : black;">@</span>
                         <select name="email_domain" id="user_email_address">
-<<<<<<< HEAD
+
                             <option value="">직접 입력</option>
                             <option value="naver.com">naver.com</option>
                             <option value="google.com">google.com</option>
@@ -265,7 +265,8 @@
             </li>
         </ul>
     </form>
-    <script>
+    <th:block layout:fragment="script">
+    <script th:inline="javascript">
 <!--        // 미입력 후 다음 단계 진행 시 오류-->
 <!--        //    아이디 미입력&ndash;&gt;-->
             function CheckValue() {
@@ -406,4 +407,5 @@
             }
         }
     </script>
+    </th:block>
 {{>layouts/footer}}

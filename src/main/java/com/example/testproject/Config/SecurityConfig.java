@@ -26,7 +26,7 @@ public class SecurityConfig{
      * */
     @Bean
     public PasswordEncoder passwordEncoder() {
-        return new BCryptPasswordEncoder();
+        return new BCryptPasswordEncoder(); //usercontroller에 passwordencoder 오류나서 수정
     }
 
 
