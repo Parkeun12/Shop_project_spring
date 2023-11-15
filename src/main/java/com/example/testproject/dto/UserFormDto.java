@@ -43,7 +43,7 @@ import lombok.ToString;
 @AllArgsConstructor
 public class UserFormDto {
 
-    private Long key;
+    private Long id;
     private String userId;
 
 //    @NotEmpty(message="비밀번호는 필수 입력값입니다.")
@@ -65,6 +65,6 @@ public class UserFormDto {
 
     private Role role;
         public Users toEntity() {
-        return new Users(key, userId, pw, pwCheck, name, phone, email, role);
+        return new Users(id, userId, pw, pwCheck, name, phone, email, role);
     }
 }

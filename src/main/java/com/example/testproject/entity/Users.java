@@ -83,7 +83,7 @@ import lombok.ToString;
 public class Users {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long key;
+    private Long id;
 
     @Column(name = "users_id")
     private String userId;
