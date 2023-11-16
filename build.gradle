@@ -33,6 +33,7 @@ dependencies {
 	implementation 'org.springframework.boot:spring-boot-starter-security'
 	testImplementation 'org.springframework.security:spring-security-test'
 
+	//valid 사용 위함
 	implementation 'org.springframework.boot:spring-boot-starter-validation'
 }
 
