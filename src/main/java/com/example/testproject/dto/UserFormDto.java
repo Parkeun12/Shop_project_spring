@@ -36,11 +36,15 @@ package com.example.testproject.dto;
 import com.example.testproject.entity.Role;
 import com.example.testproject.entity.Users;
 import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.Setter;
 import lombok.ToString;
 
 
 @ToString
 @AllArgsConstructor
+@Getter
+@Setter
 public class UserFormDto {
 
     private Long id;

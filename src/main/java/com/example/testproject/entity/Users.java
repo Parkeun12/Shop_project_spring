@@ -68,11 +68,10 @@
 
 package com.example.testproject.entity;
 
+import com.example.testproject.dto.UserFormDto;
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.ToString;
+import lombok.*;
+import org.springframework.security.crypto.password.PasswordEncoder;
 
 
 @AllArgsConstructor
@@ -80,6 +79,7 @@ import lombok.ToString;
 @ToString
 @Entity
 @Getter
+@Setter
 public class Users {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -117,14 +117,18 @@ public class Users {
      * 코드가 변경되더라도 한 군데만 수정하면 되는 이점이 있다.
      * */
 
-//    public static Users createUsers(UserFormDto userFormDto) {
-//        Users user = new Users();
-//
-//        user.setUserId(userFormDto.getUserId());
-////        user.setUsers_id(Long.valueOf(userFormDto.getUsers_id()));
-//        user.setEmail(userFormDto.getEmail());
-//
-//        user.setRole(Role.USER);
-//        return user;
-//    }
+    public static Users createUsers(UserFormDto userFormDto, PasswordEncoder passwordEncoder) {
+        Users user = new Users();
+
+        user.setUserId(userFormDto.getUserId());
+        user.setName(userFormDto.getName());
+        user.setEmail(userFormDto.getEmail());
+        user.setPhone(userFormDto.getPhone());
+        user.setPwCheck(userFormDto.getPwCheck());
+        String password = passwordEncoder.encode(userFormDto.getPw());
+        user.setPw(password);
+        user.setRole(Role.USER);
+        return user;
+    }
+
 }
