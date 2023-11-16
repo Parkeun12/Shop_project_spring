@@ -5,9 +5,13 @@ import com.example.testproject.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+
+import java.util.Optional;
 
 @Service
 @RequiredArgsConstructor
+@Transactional
 public class UserService {
 
     private final UserRepository userRepository;
@@ -19,5 +23,17 @@ public class UserService {
         user.setPw(passwordEncoder.encode(pw));
         this.userRepository.save(user);
         return user;
+    }
+
+    public Users saveUser(Users user) {
+        validateDuplicateMember(user);
+        return userRepository.save(user);
+    }
+    //이미 가입된 회원의 경우 IllegalStateException 예외를 발생시킨다.
+    private void validateDuplicateMember(Users user) {
+        Optional<Users> findUser = userRepository.findByUserId(user.getUserId());
+        if (findUser != null) {
+            throw new IllegalStateException("이미 가입된 회원입니다.");
+        }
     }
 }

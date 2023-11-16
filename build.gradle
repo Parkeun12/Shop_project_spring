@@ -33,7 +33,7 @@ dependencies {
 	implementation 'org.springframework.boot:spring-boot-starter-security'
 	testImplementation 'org.springframework.security:spring-security-test'
 
-	//valid 사용 위함
+	//회원가입 페이지에서 서버로 넘어오는 값을 검증
 	implementation 'org.springframework.boot:spring-boot-starter-validation'
 }
 

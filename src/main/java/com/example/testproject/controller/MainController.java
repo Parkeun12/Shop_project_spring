@@ -19,7 +19,7 @@ public class MainController {
     @Autowired
     private ProductRepository productRepository;
 
-    @GetMapping("/mainshop")
+    @GetMapping(value = "/")
     public String MainShop_page(Model model){
 
         ArrayList<Product> productEntityList = productRepository.findAll();

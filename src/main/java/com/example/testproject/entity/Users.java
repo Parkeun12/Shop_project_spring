@@ -18,7 +18,7 @@ public class Users {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(name = "users_id")
+    @Column(name = "users_id", unique = true)
     private String userId;
 
     @Column(name = "users_pw")
@@ -48,6 +48,7 @@ public class Users {
      * User엔티티를 생성하는 메서드
      * 유저 엔티티에 회원을 생성하는 메서드를 만들어서 관리를한다면
      * 코드가 변경되더라도 한 군데만 수정하면 되는 이점이 있다.
+     * 스프링 시큐리티 설정 클래스에 등록한 BCryptPasswordEncoder Bean을 파라미터로 넘겨서 비밀번호를 암호화한다.
      * */
 
     public static Users createUser(UserFormDto userFormDto, PasswordEncoder passwordEncoder) {
