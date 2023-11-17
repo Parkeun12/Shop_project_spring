@@ -34,12 +34,12 @@ public class UserController {
         return "articles/join";
     }
 //    회원가입 성공하면 메인 페이지로 리다이렉트
-    @PostMapping(value="/new")
-    public String userForm(UserFormDto userFormDto) {
-        Users user = Users.createUser(userFormDto, passwordEncoder);
-        userService.saveUser(user);
-        return "redirect:/";
-    }
+//    @PostMapping(value="/new")
+//    public String userForm(UserFormDto userFormDto) {
+//        Users user = Users.createUser(userFormDto, passwordEncoder);
+//        userService.saveUser(user);
+//        return "redirect:/";
+//    }
 //    검증하려는 객체의 앞에 @Valid 어노테이션을 선언하고, 파라미터로 bindingResult 객체를 추가한다.
 //    검사 후 결과는 bindingResult에 담아준다. bindingResult.hasErrors()를 호출하여 에러가 있으면 회원가입 페이지로 이동한다.
 //    회원가입 시 중복 회원 가입 예외가 발생하면 에러 메시지를 뷰로 전달한다.
