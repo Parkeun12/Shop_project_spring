@@ -25,14 +25,14 @@ public class UserService {
         return user;
     }
 
-    public Users saveUser(Users user) {
+    public Users saveUsers(Users user) {
         validateDuplicateMember(user);
         return userRepository.save(user);
     }
     //이미 가입된 회원의 경우 IllegalStateException 예외를 발생시킨다.
     private void validateDuplicateMember(Users user) {
-        Optional<Users> findUser = userRepository.findByUserId(user.getUserId());
-        if (findUser != null) {
+        Optional<Users> findUsers = userRepository.findByUserId(user.getUserId());
+        if (findUsers != null) {
             throw new IllegalStateException("이미 가입된 회원입니다.");
         }
     }

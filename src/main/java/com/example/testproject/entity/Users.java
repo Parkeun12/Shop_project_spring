@@ -7,18 +7,19 @@ import lombok.*;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
 
-@AllArgsConstructor
+
 @NoArgsConstructor
 @ToString
 @Entity
 @Getter
 @Setter
+@Table(name = "users")
 public class Users {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(name = "users_id", unique = true)
+    @Column(name = "users_id")
     private String userId;
 
     @Column(name = "users_pw")
