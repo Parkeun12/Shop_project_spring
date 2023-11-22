@@ -29,25 +29,25 @@ public class UserController {
     private UserRepository userRepository;
 
     @GetMapping(value="/new")
-    public String userForm(Model model) {
-        model.addAttribute("userFormDto", new UserFormDto());
+    public String userForm(UserFormDto userFormDto ,Model model) {
+        model.addAttribute("userFormDto", userFormDto);
         return "articles/join";
     }
 //    회원가입 성공하면 메인 페이지로 리다이렉트
-//    @PostMapping(value="/new")
-//    public String userForm(UserFormDto userFormDto) {
-//        Users user = Users.createUser(userFormDto, passwordEncoder);
-//        userService.saveUser(user);
-//        return "redirect:/";
-//    }
+    @PostMapping(value="/new")
+    public String userForm(UserFormDto userFormDto) {
+        Users user = Users.createUser(userFormDto, passwordEncoder);
+        userService.saveUsers(user);
+        return "redirect:/";
+    }
 
 //    검증하려는 객체의 앞에 @Valid 어노테이션을 선언하고, 파라미터로 bindingResult 객체를 추가한다.
 //    검사 후 결과는 bindingResult에 담아준다. bindingResult.hasErrors()를 호출하여 에러가 있으면 회원가입 페이지로 이동한다.
 //    회원가입 시 중복 회원 가입 예외가 발생하면 에러 메시지를 뷰로 전달한다.
 //    유효하지 않은 회원 가입 정보를 입력 후 서버로 전송하면 해당 이유를 화면에서 보여준다.
     @PostMapping(value = "/new")
-    public String newUser(@Valid UserFormDto userFormDto,
-                            BindingResult bindingResult, Model model) {
+    public String newUser(@Valid UserFormDto userFormDto, BindingResult bindingResult, Model model) {
+
         if (bindingResult.hasErrors()) {
             return "articles/join";
         }
@@ -56,7 +56,6 @@ public class UserController {
             Users user = Users.createUser(userFormDto, passwordEncoder);
             userService.saveUsers(user);
         } catch (IllegalStateException e) {
-            //회원가입 시 중복 회원 가입 예외가 발생하면 에러 메시지를 뷰로 전달
             model.addAttribute("errorMessage", e.getMessage());
             return "articles/join";
         }
@@ -64,14 +63,13 @@ public class UserController {
         return "redirect:/";
     }
 
-
     //회원가입 데이터 보내기
 //    @GetMapping("/user/join")
 //    public String joinPage(){
 //        return "/articles/join";
 //    }
 //
-//    @PostMapping("/user/create")
+//    @PostMapping(value = "/new")
 //    public String createJoin(UserFormDto form){
 //        log.info(form.toString());
 //

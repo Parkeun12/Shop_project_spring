@@ -9,13 +9,17 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 
 
 @NoArgsConstructor
+@AllArgsConstructor
+@Data
+@Table(name = "users")
+
 @ToString
 @Entity
 @Getter
 @Setter
-@Table(name = "users")
 public class Users {
     @Id
+    @Column(name = "id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
@@ -60,11 +64,13 @@ public class Users {
         user.setEmail(userFormDto.getEmail());
         user.setPhone(userFormDto.getPhone());
         user.setPwCheck(userFormDto.getPwCheck());
+
+        // 스프링 시큐리티 설정을 클래스에 등록한 BCryptPassword Bean을 파라미터로 넘겨서 비밀번호를 암호화
         String password = passwordEncoder.encode(userFormDto.getPw());
         user.setPw(password);
         user.setRole(Role.USER);
-        return user;
 
+        return user;
     }
 
 
