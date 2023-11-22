@@ -1,5 +1,7 @@
 package com.example.testproject.Service;
 
+import com.example.testproject.Exception.ErrorCode;
+import com.example.testproject.Exception.HospitalReviewAppException;
 import com.example.testproject.entity.Users;
 import com.example.testproject.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
@@ -16,6 +18,16 @@ public class UserService {
 
     private final UserRepository userRepository;
 
+    @Transactional
+    public Users join(Users user) {
+        userRepository.findByUserId(user.getUserId())
+                .ifPresent( user1 -> {
+                    throw new HospitalReviewAppException(ErrorCode.DUPLICATED_USER_NAME, String.format("UserId : %s",user1.getUserId()));
+                });
+        userRepository.save(user);
+
+        return user;
+    }
     public Users create(String userId, String pw) {
         Users user = new Users();
         user.setUserId(userId);

@@ -64,6 +64,7 @@ public class Users {
         user.setPw(password);
         user.setRole(Role.USER);
         return user;
+
     }
 
 
