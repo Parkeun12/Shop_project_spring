@@ -67,6 +67,9 @@ public class Users {
         // 스프링 시큐리티 설정을 클래스에 등록한 BCryptPassword Bean을 파라미터로 넘겨서 비밀번호를 암호화
         String password = passwordEncoder.encode(userFormDto.getPw());
         user.setPw(password);
+
+        //관리자로 가길 원하면 이 줄 수정
+        //role.admin으로 변경하면 가능
         user.setRole(Role.USER);
 
         return user;

@@ -33,14 +33,6 @@ public class UserController {
         model.addAttribute("userFormDto", userFormDto);
         return "articles/join";
     }
-//    회원가입 성공하면 메인 페이지로 리다이렉트
-//    @PostMapping(value="/new")
-//    public String userForm(UserFormDto userFormDto) {
-//        Users user = Users.createUsers(userFormDto, passwordEncoder);
-//        userService.saveUsers(user);
-//        return "redirect:/";
-//    }
-
 //    검증하려는 객체의 앞에 @Valid 어노테이션을 선언하고, 파라미터로 bindingResult 객체를 추가한다.
 //    검사 후 결과는 bindingResult에 담아준다. bindingResult.hasErrors()를 호출하여 에러가 있으면 회원가입 페이지로 이동한다.
 //    회원가입 시 중복 회원 가입 예외가 발생하면 에러 메시지를 뷰로 전달한다.
@@ -60,35 +52,22 @@ public class UserController {
         }
         return "redirect:/";
     }
-
-    //회원가입 데이터 보내기
-//    @GetMapping("/user/join")
-//    public String joinPage(){
-//        return "/articles/join";
-//    }
-//
-//    @PostMapping(value = "/new")
-//    public String createJoin(UserFormDto form){
-//        log.info(form.toString());
-//
-//        Users user = form.toEntity();
-//        log.info(user.toString());
-//
-//        Users saved = userRepository.save(user);
-//        log.info(form.toString());
-//        return "";
-//    }
-
-    //로그인 데이터 보내기
-//    @GetMapping("/user/login")
-//    public String LoginPage(){
-//        return "/articles/login";
-//    }
-//
+//    로그인 데이터 보내기
+    @GetMapping("/login")
+    public String loginUser() {
+        return "articles/login";
+    }
+//    로그인 에러 페이지
+    @GetMapping("/login/error")
+    public String loginError(Model model) {
+        model.addAttribute("loginErrorMsg", "아이디 또는 비밀번호를 확인해주세요.");
+        return "articles/login";
+    }
 //    @PostMapping("/user/lg")
 //    public String createLogin(UserFormDto form){
 //        log.info(form.toString());
 //
+//        Users user = form.toEntity();
 //        Users user = form.toEntity();
 //        log.info(user.toString());
 //
