@@ -36,7 +36,11 @@ public class SecurityConfig {
                 .csrf().disable()//REST API에서 csrf 보안이 필요없기 때문에 비활성화,
                 .cors().and()
                 .authorizeRequests()// 요청에 대한 사용 권한을 체크
-                .requestMatchers("/","/users/login","/users/new").permitAll()//antMatchers 파라미터로 설정한 리소스 접근을 인증절차 없이 허용
+
+                //css나 img 적용 안될 때 확인하기
+                //antMatchers 파라미터로 설정한 리소스 접근을 인증절차 없이 허용
+                .requestMatchers("/","/users/login","/users/new","/js/**", "/css/**", "/img/**").permitAll()
+
                 .anyRequest().authenticated()
                 .and()
                 .sessionManagement()
