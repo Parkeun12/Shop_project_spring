@@ -29,6 +29,7 @@
 </header>
 <section>
     {{>layouts/leftside}}
+</section>
     <!-- 로그인 영역 -->
     <form action="/users/login" method="post">
         <div class="container">
@@ -60,6 +61,15 @@
             </div>
         </div>
     </form>
+    <div id="footer">
+        <div class="shop_footer">
+            <div class="textBox">
+                <h1>
+                    Footer 영역
+                </h1>
+            </div>
+        </div>
+    </div>
 
     <script>
         //로그인 실패 알럿 추가
@@ -99,5 +109,14 @@
                     }
 
                 }
+                //메인 메뉴 슬라이드 부분
+            jQuery(document).ready(function () {
+        $('.navi>li').mouseover(function () {
+            $(this).find('.submenu').stop().slideDown(500);
+        }).mouseout(function () {
+            $(this).find('.submenu').stop().slideUp(500);
+        });
+    });
     </script>
-{{>layouts/footer}}
+</body>
+</html>
