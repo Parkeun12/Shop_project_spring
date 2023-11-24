@@ -7,7 +7,6 @@ import lombok.*;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
 
-
 @NoArgsConstructor
 @AllArgsConstructor
 @Data
@@ -23,7 +22,7 @@ public class Users {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(name = "users_id")
+    @Column(name = "users_id", unique = true)
     private String userId;
 
     @Column(name = "users_pw")
@@ -56,7 +55,7 @@ public class Users {
      * 스프링 시큐리티 설정 클래스에 등록한 BCryptPasswordEncoder Bean을 파라미터로 넘겨서 비밀번호를 암호화한다.
      * */
 
-    public static Users createUser(UserFormDto userFormDto, PasswordEncoder passwordEncoder) {
+    public static Users createUsers(UserFormDto userFormDto, PasswordEncoder passwordEncoder) {
         Users user = new Users();
 
         user.setUserId(userFormDto.getUserId());
@@ -72,6 +71,5 @@ public class Users {
 
         return user;
     }
-
 
 }

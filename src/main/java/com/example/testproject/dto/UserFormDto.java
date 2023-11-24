@@ -43,8 +43,12 @@ public class UserFormDto {
 
     private Role role;
 
+    public UserFormDto() {
 
-    public Users createUser() {
-        return new Users(null, userId, pw, pwCheck, name, phone, email, null);
     }
+
+    public Users toEntity() {
+        return new Users(id, userId, pw, pwCheck, name, phone, email, role);
+    }
+
 }

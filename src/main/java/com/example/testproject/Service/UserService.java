@@ -6,8 +6,6 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.util.Optional;
-
 @Service
 @RequiredArgsConstructor
 @Transactional
@@ -20,16 +18,17 @@ public class UserService {
         return userRepository.save(user);
     }
 
-    //이미 가입된 회원의 경우 IllegalStateException 예외를 발생시킨다.
+//    이미 가입된 회원의 경우 IllegalStateException 예외를 발생시킨다.
     private void validateDuplicateMember(Users user) {
-        Optional<Users> findUsers = userRepository.findByUserId(user.getUserId());
-        if (findUsers != null) {
+        Users findByUsers = userRepository.findByUserId(user.getUserId());
+        if (findByUsers != null) {
             throw new IllegalStateException("이미 가입된 회원입니다.");
         }
     }
+
 //    @Override
-//    public UserDetails loadUserByUsername(String userId) throws UsernameNotFoundException{
-//        Optional<Users> user = userRepository.findByUserId(userId);
+//    public UserDetails loadUserByUsername(String userId) throws UsernameNotFoundException {
+//        Users user = userRepository.findByUserId(userId);
 //
 //        if (user == null){
 //            throw new UsernameNotFoundException(userId);
@@ -51,7 +50,7 @@ public class UserService {
 //
 //        return user;
 //    }
-//    public Users create(String userId, String pw) {
+//    public Users createUsers(String userId, String pw) {
 //        Users user = new Users();
 //        user.setUserId(userId);
 //        BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
