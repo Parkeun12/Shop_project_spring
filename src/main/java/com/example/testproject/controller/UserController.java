@@ -50,7 +50,7 @@ public class UserController {
         model.addAttribute("errorMessage", e.getMessage());
             return "articles/join";
         }
-        return "redirect:/"; //회원가입 완료 페이지로 이동되어야함
+        return "redirect:/mainshop"; //회원가입 완료 페이지로 이동되어야함
     }
 
 //    로그인 데이터 보내기
@@ -61,7 +61,7 @@ public class UserController {
 
     @PostMapping(value = "/login")
     public String Login(){
-        return "redirect:/"; //성공 시 메인페이지로 리다이렉트
+        return "redirect:/mainshop"; //성공 시 메인페이지로 리다이렉트
     }
 
 //    로그인 에러 페이지
