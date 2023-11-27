@@ -37,7 +37,7 @@ public class UserController {
 //    검사 후 결과는 bindingResult에 담아준다. bindingResult.hasErrors()를 호출하여 에러가 있으면 회원가입 페이지로 이동한다.
 //    회원가입 시 중복 회원 가입 예외가 발생하면 에러 메시지를 뷰로 전달한다.
 //    유효하지 않은 회원 가입 정보를 입력 후 서버로 전송하면 해당 이유를 화면에서 보여준다.
-    @PostMapping(value = "new")
+    @PostMapping(value = "/new")
     public String newUser(@Valid UserFormDto userFormDto, BindingResult bindingResult, Model model) {
 
         if (bindingResult.hasErrors()) {
@@ -50,7 +50,7 @@ public class UserController {
         model.addAttribute("errorMessage", e.getMessage());
             return "articles/join";
         }
-        return "redirect:/";
+        return "redirect:/"; //회원가입 완료 페이지로 이동되어야함
     }
 
 //    로그인 데이터 보내기
@@ -58,6 +58,12 @@ public class UserController {
     public String loginUser() {
         return "articles/login";
     }
+
+    @PostMapping(value = "/login")
+    public String Login(){
+        return "redirect:/"; //성공 시 메인페이지로 리다이렉트
+    }
+
 //    로그인 에러 페이지
     @GetMapping(value = "/login/error")
     public String loginError(Model model) {
