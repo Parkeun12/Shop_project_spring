@@ -1,8 +1,6 @@
 package com.example.testproject.entity;
 
-import lombok.Getter;
-
-@Getter
+//@Getter
 //관리자와 일반 유저 구분
 public enum Role {
     USER, ADMIN

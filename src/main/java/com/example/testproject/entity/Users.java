@@ -67,7 +67,7 @@ public class Users {
 
         //관리자로 가길 원하면 이 줄 수정
         //role.admin으로 변경하면 가능
-        user.setRole(Role.USER);
+//        user.setRole(Role.USER);
 
         return user;
     }

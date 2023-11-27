@@ -24,7 +24,7 @@ public class ProductController {
     public ProductRepository productRepository;
 
     // 상품 등록 페이지
-    @GetMapping("/adimin/product/new")
+    @GetMapping("/product/new")
     public String productSave(){
         return "articles/productNew";
     }

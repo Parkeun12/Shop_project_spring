@@ -34,7 +34,7 @@ public class SecurityConfig {
 
                 //css나 img 적용 안될 때 확인하기
                 //antMatchers 파라미터로 설정한 리소스 접근을 인증절차 없이 허용
-                .requestMatchers("/","/users/login","/users/new","/js/**", "/css/**", "/img/**").permitAll()
+                .requestMatchers("/","/users/login","/users/new","/js/**", "/css/**", "/img/**","/product/**","/mainshop/**").permitAll()
 
                 .anyRequest().authenticated()
 //                .and()
