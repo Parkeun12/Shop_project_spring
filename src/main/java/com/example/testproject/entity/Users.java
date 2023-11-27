@@ -22,6 +22,7 @@ public class Users {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    //회원은 유저아이디를 통해 유일하게 구분해야 하기 때문에, 동일한 값이 데이터베이스에 들어올 수 없도록 unique 속성을 지정함
     @Column(name = "users_id", unique = true)
     private String userId;
 
@@ -48,13 +49,9 @@ public class Users {
     @Enumerated(EnumType.STRING)
     private Role role;
 
-    /*
-     * User엔티티를 생성하는 메서드
-     * 유저 엔티티에 회원을 생성하는 메서드를 만들어서 관리를한다면
-     * 코드가 변경되더라도 한 군데만 수정하면 되는 이점이 있다.
-     * 스프링 시큐리티 설정 클래스에 등록한 BCryptPasswordEncoder Bean을 파라미터로 넘겨서 비밀번호를 암호화한다.
-     * */
 
+    //Member 엔티티를 생성하는 메소드, Member 엔티티에 회원을 생성하는 메소드를 만들어서 관리를 한다면 코드가 변경되더라도 한 군데만 수정하면 되는 이점이 있음
+    //스프링 시큐리티 설정 클래스에 등록한 BCryPaswordEncoder Bean을 파라미터로 넘겨서 비밀번호를 암호화함
     public static Users createUsers(UserFormDto userFormDto, PasswordEncoder passwordEncoder) {
         Users user = new Users();
 

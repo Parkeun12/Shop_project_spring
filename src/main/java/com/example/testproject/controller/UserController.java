@@ -52,27 +52,16 @@ public class UserController {
         }
         return "redirect:/";
     }
+
 //    로그인 데이터 보내기
-    @GetMapping("/login")
+    @GetMapping(value = "/login")
     public String loginUser() {
         return "articles/login";
     }
 //    로그인 에러 페이지
-    @GetMapping("/login/error")
+    @GetMapping(value = "/login/error")
     public String loginError(Model model) {
         model.addAttribute("loginErrorMsg", "아이디 또는 비밀번호를 확인해주세요.");
         return "articles/login";
     }
-//    @PostMapping("/user/lg")
-//    public String createLogin(UserFormDto form){
-//        log.info(form.toString());
-//
-//        Users user = form.toEntity();
-//        Users user = form.toEntity();
-//        log.info(user.toString());
-//
-//        Users saved = userRepository.save(user);
-//        log.info(form.toString());
-//        return "";
-//    }
 }
