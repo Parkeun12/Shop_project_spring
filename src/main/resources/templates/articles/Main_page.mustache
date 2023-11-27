@@ -37,7 +37,7 @@
             <video src="/img/mainVedio.mp4" autoplay loop muted></video>
         </div>
 
-
+        <form class="WishlistInput" action="/wishlist/create" method="post">
         <!--상품 섹션-->
         <div class="product">
             <ul class="product_list">
@@ -56,10 +56,11 @@
                                 </div>
 
                                 <div class="product_basket_button">
-                                    <a class="product_basket" onclick="showPopup();">
-                                        <img src="/img/basket.png" alt="">
-                                        <!-- <img src="images/basket.png" alt=""> -->
-                                    </a>
+<!--                                    <a class="product_basket" onclick="showPopup();">-->
+<!--                                        <img src="/img/basket.png" alt="">-->
+<!--                                        &lt;!&ndash; <img src="images/basket.png" alt=""> &ndash;&gt;-->
+<!--                                    </a>-->
+                                    <input type="submit" value="관심상품">
                                     <a onclick="window.open('/mainshop/payment_popup/{{productNum}}', '바로구매팝업', 'width=400, height=450, left=700, top=150');">
                                         <div class="product_button">
                                             <p class="payment">바로구매</p>
@@ -78,6 +79,7 @@
                 {{/mainProduct}}
             </ul>
         </div>
+        </form>
         <div id="footer">
             <div class="shop_footer">
                 <div class="textBox">

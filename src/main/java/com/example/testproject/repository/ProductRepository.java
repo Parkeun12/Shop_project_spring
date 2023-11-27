@@ -2,6 +2,7 @@ package com.example.testproject.repository;
 
 import com.example.testproject.entity.Product;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Query;
 
 import java.util.ArrayList;
 
@@ -11,5 +12,6 @@ public interface ProductRepository extends JpaRepository<Product, Long> {
     //Iterable 하위에 있느
     @Override
     ArrayList<Product> findAll();
+
 
 }

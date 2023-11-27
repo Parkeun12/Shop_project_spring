@@ -17,12 +17,12 @@
         <div>
             <div class="icon_member">
                 <a href="#">
-                    <img src="/img/memberW.png" alt="member">
+                    <img src="/img/memberB.png" alt="member">
                 </a>
             </div>
             <div class="icon_basket">
                 <a href="#">
-                    <img src="/img/basketW.png" alt="basket">
+                    <img src="/img/basket.png" alt="basket">
                 </a>
             </div>
         </div>
@@ -36,7 +36,7 @@
     <div class="h3">
         <h3>회원 가입</h3>
     </div>
-    <form action="/user/create" method="post">
+    <form action="/users/new" method="post">
         <table>
             <tr>
                 <th>아이디<span>*</span></th>
@@ -121,11 +121,6 @@
                             <option value="naver.com">naver.com</option>
                             <option value="google.com">google.com</option>
                             <option value="hanmail.net">hanmail.net</option>
-
-                            <option value="1">직접 입력</option>
-                            <option value="2">naver.com</option>
-                            <option value="3">google.com</option>
-                            <option value="4">hanmail.net</option>
                         </select>
                         <input type="hidden" id="totalemail" name="email" value="">
                     </div>
@@ -267,7 +262,7 @@
 
     <script>
 <!--        // 미입력 후 다음 단계 진행 시 오류-->
-<!--        //    아이디 미입력&ndash;&gt;-->
+<!--        //    아이디 미입력
             function CheckValue() {
                         let _ID = document.getElementById("id").value;
                         let ID_Label = document.getElementById("ID_Chk");
@@ -280,7 +275,7 @@
                             ID_Label.style.display = "none";
                         }
                     }
-<!--                  //비밀번호 미입력&ndash;&gt;-->
+<!--                  //비밀번호 미입력
                     function CheckValue1() {
                         let _PASSWORD = document.getElementById("pw").value;
                         let _PASSWORD_Label = document.getElementById("PASSWORD_Chk");
@@ -307,7 +302,7 @@
                         }
 
                     }
-<!--                 //이름 미입력&ndash;&gt;-->
+<!--                 //이름 미입력
                     function CheckValue3() {
                         let _PASSWORD = document.getElementById("name").value;
                         let _PASSWORD_Label = document.getElementById("NAME_Chk");
@@ -321,7 +316,7 @@
                         }
 
                     }
-<!--                 //휴대전화 미입력&ndash;&gt;-->
+<!--                 //휴대전화 미입력
                     function CheckValue4() {
                         let _PASSWORD = document.getElementById("phone2").value;
                         let _PASSWORD_Label = document.getElementById("PHONE_Chk");
@@ -346,7 +341,7 @@
                         }
 
                     }
-<!--                    //이메일 미입력&ndash;&gt;-->
+<!--                    //이메일 미입력
                     function CheckValue5() {
                         let _PASSWORD = document.getElementById("email").value;
                         let _PASSWORD_Label = document.getElementById("EMAIL_Chk");
