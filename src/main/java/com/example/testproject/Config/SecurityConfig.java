@@ -1,11 +1,13 @@
 package com.example.testproject.Config;
 
+import com.example.testproject.Service.UserSecurityService;
 import com.example.testproject.Service.UserService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
+import org.springframework.security.authentication.AuthenticationManager;
+import org.springframework.security.config.annotation.authentication.configuration.AuthenticationConfiguration;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
@@ -18,7 +20,9 @@ import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 @RequiredArgsConstructor
 public class SecurityConfig {
     @Autowired
-    UserService userService;
+    private UserService userService;
+    @Autowired
+    private UserSecurityService userSecurityService;
 
     //회원가입 시 필요한 bean
     //    csrf : 로컬에서 확인을 위해 csrf를 비활성화
@@ -35,11 +39,7 @@ public class SecurityConfig {
                 //css나 img 적용 안될 때 확인하기
                 //antMatchers 파라미터로 설정한 리소스 접근을 인증절차 없이 허용
                 .requestMatchers("/","/users/login","/users/new","/js/**", "/css/**", "/img/**","/product/**","/mainshop/**").permitAll()
-
                 .anyRequest().authenticated()
-//                .and()
-//                .sessionManagement()
-//                .sessionCreationPolicy(SessionCreationPolicy.STATELESS)//STATELESS로 설정함으로서 인증 정보를 서버에 담아두지 않음,JWT 토큰을 사용할 것이기 때문
                 .and()
                 .build();
     }
@@ -48,7 +48,7 @@ public class SecurityConfig {
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception{
         http.formLogin()
-                .loginPage("/users/login") //로그인페이지 URL
+                .loginPage("/users/login").permitAll() //로그인페이지 URL
                 .defaultSuccessUrl("/") //로그인 성공시 이동할 페이지
                 .usernameParameter("userId") // 로그인시 사용할 파라미터 이름 설정
                 .failureUrl("/users/login/error") // 로그인 실패시 이동할 URL
@@ -69,10 +69,15 @@ public class SecurityConfig {
     public PasswordEncoder passwordEncoder(){
         return new BCryptPasswordEncoder();
     }
-
-    protected void configure(AuthenticationManagerBuilder auth)throws Exception{//<- 회원가입 추가
-        auth.userDetailsService(userService)
-                .passwordEncoder(passwordEncoder());
+    //AuthenticationManager는 스프링 시큐리티의 인증을 담당
+    //
+    //AuthenticationManager 빈 생성시 스프링의 내부 동작으로 인해
+    //
+    //위에서 작성한 UserSecurityService와 PasswordEncoder가 자동으로 설정
+    @Bean
+    AuthenticationManager authenticationManager(AuthenticationConfiguration authenticationConfiguration)
+            throws Exception {
+        return authenticationConfiguration.getAuthenticationManager();
     }
 }
 
