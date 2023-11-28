@@ -1,7 +1,6 @@
 
 package com.example.testproject.dto;
 
-import com.example.testproject.entity.Role;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotEmpty;
 import lombok.AllArgsConstructor;
@@ -40,6 +39,6 @@ public class UserFormDto {
     @NotEmpty(message="이메일은 필수 입력값입니다.")
     private String email;
 
-    private Role role;
+//    private Role role;
 
 }
