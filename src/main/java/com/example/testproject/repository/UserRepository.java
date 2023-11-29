@@ -9,5 +9,7 @@ import java.util.Optional;
 
 @Repository
 public interface UserRepository extends JpaRepository<Users, Long> {
+//    유저이름을 찾는 기능 추가
     Optional<Users> findByUsername(String username);
+
 }
