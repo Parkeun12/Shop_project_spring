@@ -37,11 +37,12 @@
             <video src="/img/mainVedio.mp4" autoplay loop muted></video>
         </div>
 
-        <form class="WishlistInput" action="/wishlist/create" method="post">
+        <form action="/wishlist" method="post">
         <!--상품 섹션-->
         <div class="product">
             <ul class="product_list">
                 {{#mainProduct}}
+                    <input type="hidden" name="productNum" value="{{productNum}}">
                     <li class="list">
                         <div class="container">
                             <div id="snap">
@@ -56,11 +57,8 @@
                                 </div>
 
                                 <div class="product_basket_button">
-<!--                                    <a class="product_basket" onclick="showPopup();">-->
-<!--                                        <img src="/img/basket.png" alt="">-->
-<!--                                        &lt;!&ndash; <img src="images/basket.png" alt=""> &ndash;&gt;-->
-<!--                                    </a>-->
                                     <input type="submit" value="관심상품">
+
                                     <a onclick="window.open('/mainshop/payment_popup/{{productNum}}', '바로구매팝업', 'width=400, height=450, left=700, top=150');">
                                         <div class="product_button">
                                             <p class="payment">바로구매</p>
@@ -69,7 +67,6 @@
                                 </div>
                             </div>
                             <a href="#">
-                                <!--                        <a href="productDetailsMore.html">-->
                                 <div class="product_img">
                                     <img src="/img/BOTTOM/{{productImg}}" alt="test1" style="width: 354px; height: 540px;">
                                 </div>
@@ -103,11 +100,6 @@
     function showPopup() {
         window.open("/mainshop/zzim_popup", "찜팝업", "width=450, height=200, left=800, top=300");
     }
-<!--{{#mainProduct}}
-    function showPopup1() {
-        window.open("/mainshop/payment_popup/{{productNum}}", "바로구매팝업", "width=400, height=450, left=700, top=150");
-            }
-{{/mainProduct}}-->
 </script>
 </body>
 

@@ -1,10 +1,7 @@
 package com.example.testproject.entity;
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.ToString;
+import lombok.*;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -14,7 +11,7 @@ import java.util.List;
 @ToString
 @Entity
 @Getter
-//@Getter
+@Setter
 public class Product {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -42,4 +39,13 @@ public class Product {
     @OneToMany(mappedBy = "product")
     private List<Wishlist> wishlists = new ArrayList<>();
 
+    public Product(Long productNum, String productName, int productPrice, String productImg, String productTxt, String productColor, String productSize) {
+        this.productNum = productNum;
+        this.productName = productName;
+        this.productPrice = productPrice;
+        this.productImg = productImg;
+        this.productTxt = productTxt;
+        this.productColor = productColor;
+        this.productSize = productSize;
+    }
 }

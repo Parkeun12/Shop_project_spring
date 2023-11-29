@@ -6,6 +6,7 @@ import com.example.testproject.repository.ProductRepository;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.Banner;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -31,7 +32,7 @@ public class ProductController {
 
     // 상품 등록 (post) <pro 이름 변경 여부>
     @PostMapping("/product/create")
-    public String createProduct(ProductForm form){
+    public String createProduct(ProductForm form, Model model){
         log.info(form.toString());
         //1. DTO > Entity로 변환
         Product product = form.toEntity();

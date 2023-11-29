@@ -53,7 +53,7 @@ public class Users {
     private Role role;
 
     //Wishlist와 양방향매핑
-    @OneToMany(mappedBy = "user")
+    @OneToMany(mappedBy = "users")
     private List<Wishlist> wishlists = new ArrayList<>();
 
 
@@ -78,6 +78,4 @@ public class Users {
 
         return user;
     }
-
-
 }
