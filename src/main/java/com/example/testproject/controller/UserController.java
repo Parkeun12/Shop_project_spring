@@ -2,15 +2,18 @@ package com.example.testproject.controller;
 
 import com.example.testproject.Service.UserService;
 import com.example.testproject.dto.UserFormDto;
-import com.example.testproject.entity.Users;
 import com.example.testproject.repository.UserRepository;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.DataIntegrityViolationException;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.security.web.authentication.logout.SecurityContextLogoutHandler;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -29,45 +32,47 @@ public class UserController {
     private UserRepository userRepository;
 
     @GetMapping(value="/new")
-    public String userForm(UserFormDto userFormDto ,Model model) {
-        model.addAttribute("userFormDto", userFormDto);
+    public String userForm(UserFormDto userFormDto) {
         return "articles/join";
     }
-//    검증하려는 객체의 앞에 @Valid 어노테이션을 선언하고, 파라미터로 bindingResult 객체를 추가한다.
-//    검사 후 결과는 bindingResult에 담아준다. bindingResult.hasErrors()를 호출하여 에러가 있으면 회원가입 페이지로 이동한다.
-//    회원가입 시 중복 회원 가입 예외가 발생하면 에러 메시지를 뷰로 전달한다.
-//    유효하지 않은 회원 가입 정보를 입력 후 서버로 전송하면 해당 이유를 화면에서 보여준다.
     @PostMapping(value = "/new")
-    public String newUser(@Valid UserFormDto userFormDto, BindingResult bindingResult, Model model) {
+    public String newUser(@Valid UserFormDto userFormDto , BindingResult bindingResult) {
+        if(bindingResult.hasErrors()) {
+            return "articles/join";
+        }
 
-        if (bindingResult.hasErrors()) {
+        if(!userFormDto.getPassword().equals(userFormDto.getPassword2())) {
+            bindingResult.rejectValue("password2", "passwordInCorrect","패스워드가 일치하지 않습니다.");
             return "articles/join";
         }
+
         try {
-            Users user = Users.createUsers(userFormDto, passwordEncoder);
-            userService.saveUsers(user);
-        } catch (IllegalStateException e) {
-        model.addAttribute("errorMessage", e.getMessage());
+            userService.create(userFormDto.getUsername(),userFormDto.getPassword(),userFormDto.getPassword2(),userFormDto.getName(),userFormDto.getEmail(),userFormDto.getPhone());
+
+        } catch (DataIntegrityViolationException e) {
+            bindingResult.reject("joinFailed", "이미 등록된 사용자입니다.");
             return "articles/join";
+        } catch (Exception e) {
+            //그 외 모든 에러
+            e.printStackTrace(); //콘솔에 에러메시지
+            bindingResult.reject("joinFailed", "예상치 못한 에러가 발생했습니다.");
         }
-        return "redirect:/mainshop"; //회원가입 완료 페이지로 이동되어야함
+
+        return "redirect:/mainshop";
     }
 
 //    로그인 데이터 보내기
     @GetMapping(value = "/login")
-    public String loginUser() {
+    public String loginUser(String username) {
+        log.info(username);
         return "articles/login";
     }
 
-    @PostMapping(value = "/login")
-    public String Login(){
-        return "redirect:/mainshop"; //성공 시 메인페이지로 리다이렉트
+//  로그인 post는 시큐리티가 처리함(인증)
+    @GetMapping("/logout")
+    public String logoutPage(HttpServletRequest request, HttpServletResponse response) {
+        new SecurityContextLogoutHandler().logout(request, response, SecurityContextHolder.getContext().getAuthentication());
+        return "redirect:/mainshop";
     }
 
-//    로그인 에러 페이지
-    @GetMapping(value = "/login/error")
-    public String loginError(Model model) {
-        model.addAttribute("loginErrorMsg", "아이디 또는 비밀번호를 확인해주세요.");
-        return "articles/login";
-    }
 }
