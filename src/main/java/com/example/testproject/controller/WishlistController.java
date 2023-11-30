@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.ArrayList;
+import java.util.Optional;
 
 @Controller
 public class WishlistController {
@@ -50,16 +51,16 @@ public class WishlistController {
     @PostMapping("/wishlist")
     // @RequestParam은 HTTP 요청에서 파라미터 값을 가져오기 위해 사용
     public String createWishlist(WishlistForm form) {
-//// 현재 로그인한 사용자의 ID를 가져온다
-//        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-//        String currentUserId = authentication.getName();
+// 현재 로그인한 사용자의 ID를 가져온다
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        String currentUserId = authentication.getName();
 
 // 현재 로그인한 사용자의 정보 가져오기
-        Users currentUser = userRepository.findByUserId("qkqkqkqkqk");
+        Optional<Users> currentUser = userRepository.findByUsername(currentUserId);
 
         if (currentUser != null) {
             // WishlistForm에 현재 사용자의 ID를 설정
-            form.setUserId(currentUser.getId());
+            form.setUserId(currentUser.get().getId());
 
             // Product의 productNum을 설정 << 이거 변경해야할 것 같음 지금 1만 받아오고있음 디버깅시
             // 해결! input type으로 설정되어있었던 버튼을 submit으로 변경, value = {{productNum}}
