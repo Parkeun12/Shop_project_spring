@@ -25,7 +25,7 @@ public class SecurityConfig {
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity httpSecurity) throws Exception {
                 httpSecurity.csrf().disable().cors().disable()//REST API에서 csrf 보안이 필요없기 때문에 비활성화,
-                .authorizeRequests(request -> request
+                .authorizeHttpRequests(request -> request
 //                        .requestMatchers("/admin/**","/product/**").hasRole("ADMIN") //admin 접근. hasRole 사용자가 주어진 역할이 있다면 접근을 허용
 //                        .requestMatchers("/users/login","/users/new").hasRole("USER")
                         //css나 img 적용 안될 때 확인하기
