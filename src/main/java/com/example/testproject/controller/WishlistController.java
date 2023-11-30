@@ -31,7 +31,7 @@ public class WishlistController {
 
 
     // 관심상품 리스트 보여주는 매핑
-    @GetMapping("/wishlist")
+    @GetMapping("/wishlist/{Id}")
     public String wishlist(Model model) {
 //        // 현재 로그인한 사용자의 ID를 가져온다
 //        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
@@ -74,7 +74,7 @@ public class WishlistController {
             // 변환된 Wishlist를 저장하고 저장된 Wishlist의 사용자 ID를 이용하여 리다이렉트 경로를 생성
             Wishlist saved = wishlistRepository.save(wishlist);
 
-            return "redirect:/wishlist/";
+            return "redirect:/wishlist/" + saved.getUsers().getId();
         } else {
             // 사용자 정보가 없는 경우에 대한 처리 (예: 로그인 상태가 아닌 경우)
             // 추후 로그인 후 이용해주세요? 같은 팝업창이나 alert창 추가
