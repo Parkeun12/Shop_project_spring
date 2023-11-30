@@ -12,7 +12,7 @@ import java.util.List;
 
 @NoArgsConstructor
 @AllArgsConstructor
-@Data
+@Data //Data 애노테이션 삭제
 @Table(name = "users")
 
 @ToString
