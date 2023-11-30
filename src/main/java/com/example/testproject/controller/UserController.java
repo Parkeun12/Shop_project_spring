@@ -63,7 +63,8 @@ public class UserController {
 
 //    로그인 데이터 보내기
     @GetMapping(value = "/login")
-    public String loginUser() {
+    public String loginUser(String username) {
+        log.info(username);
         return "articles/login";
     }
 
