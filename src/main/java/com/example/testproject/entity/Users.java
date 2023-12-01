@@ -4,6 +4,9 @@ package com.example.testproject.entity;
 import jakarta.persistence.*;
 import lombok.*;
 
+import java.util.ArrayList;
+import java.util.List;
+
 
 @NoArgsConstructor
 @AllArgsConstructor
@@ -43,5 +46,19 @@ public class Users {
      * */
 //    @Enumerated(EnumType.STRING)
     private String role;
+
+    //Wishlist와 양방향 매핑
+    @OneToMany(mappedBy = "users")
+    private List<Wishlist> wishlists = new ArrayList<>();
+
+    public Users(Long id, String username, String password, String password2, String name, String phone, String email){
+        this.id = id;
+        this.username = username;
+        this.password = password;
+        this.password2 = password2;
+        this.name = name;
+        this.phone = phone;
+        this.email = email;
+    }
 
 }
