@@ -35,8 +35,12 @@ public class ProductController {
 
     // 상품 등록 (post) <pro 이름 변경 여부>
     @PostMapping("/product/create")
+<<<<<<< HEAD
 
     public String createProduct(@ModelAttribute ProductForm form, @RequestParam("productImg") MultipartFile file) {
+=======
+    public String createProduct(@ModelAttribute ProductForm form, @RequestParam("productImg") MultipartFile file){
+>>>>>>> main
 
         try {
             fileUploadService.uploadFile(file);
@@ -45,9 +49,15 @@ public class ProductController {
             // 파일 업로드 실패
             e.printStackTrace();
         }
+<<<<<<< HEAD
         return "";
     }
     public String createProduct(ProductForm form, Model model){
+=======
+
+
+
+>>>>>>> main
 
         log.info(form.toString());
         //1. DTO > Entity로 변환
