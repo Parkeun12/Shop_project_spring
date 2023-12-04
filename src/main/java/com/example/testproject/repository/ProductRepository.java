@@ -14,9 +14,6 @@ public interface ProductRepository extends JpaRepository<Product, Long> {
     //Iterable 하위에 있는
     @Override
     ArrayList<Product> findAll();
-
-    //where w.users_id = :userId > wishlist에 있는 users_id 값을 userId로 전달
-    //@Param("userId") Long userId가 전달받은 값을 사용
     @Query(value = "select p.product_num, p.product_name, p.product_price, p.product_img, p.product_color, p.product_size, p.product_txt, w.wishlist_id " +
             "from wishlist w " +
             "inner join product p " +
