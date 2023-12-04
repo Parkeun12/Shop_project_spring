@@ -1,6 +1,8 @@
 
 package com.example.testproject.dto;
 
+import com.example.testproject.entity.Product;
+import com.example.testproject.entity.Users;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotEmpty;
 import lombok.AllArgsConstructor;
@@ -40,5 +42,9 @@ public class UserFormDto {
     private String email;
 
 //    private UserRole role;
+
+    public Users toEntity(){
+        return new Users(id, username, password, password2, name, phone, email);
+    }
 
 }

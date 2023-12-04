@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<!--    임시추가 없어서? 일단-->
+    <!--    임시추가 없어서? 일단-->
     <link href="/css/mains.css" rel="stylesheet" type="text/css">
     <link href="/css/wishlist.css" rel="stylesheet" type="text/css">
     <link href="/css/side.css" rel="stylesheet" type="text/css">
@@ -40,36 +40,29 @@
         <div class="cart">
             <h3>관심상품</h3>
             <div class="bar"></div>
-{{#wishlists}}
-            <!-- 한달락 -->
-            <div class="row-data">
-                <div class="img">
-                    <img src="/img/BOTTOM/{{productImg}}">
-                </div>
-                <div class="mid-info">
-                    <div class="name">
-                        <!-- 상품 상세페이지로 이동 나중에 추가 -->
-<!--                        <a href="productDetailsMore.html">-->
+            {{#wishlists}}
+                <!-- 한달락 -->
+                <div class="row-data" data-product-num="{{productNum}}">
+                    <div class="img">
+                        <img src="/img/BOTTOM/{{productImg}}">
+                    </div>
+                    <div class="mid-info">
+                        <div class="name">
                             <span>{{productName}}</span>
-<!--                        </a>-->
-                        <!-- 삭제 버튼 -->
-                        <button class="box" onclick="none()">
-                            x
-                        </button>
+                            <!-- 삭제 버튼 -->
+                            <!--onclick="return confirm('정말로 삭제하시겠습니까?')" < 필요할경우 추가 가능 -->
+                            <a href="/wishlist/{{productNum}}/delete" class="box">
+                                x
+                            </a>
+                        </div>
+                        <!-- 상품 가격 + 배송비 -->
+                        <div class="price">
+                            <span>가격 : {{productPrice}}(원)</span>
+                        </div>
                     </div>
-                    <!-- 상품 가격 + 배송비 -->
-                    <div class="price">
-                        <span>가격 : {{productPrice}}(원)</span>
-                    </div>
-                    <!-- <a onclick="showPopup();">
-                      <div class="basket">
-                        <button>장바구니</button>
-                      </div>
-                    </a> -->
                 </div>
-            </div>
-            <!-- 한달락 -->
-    {{/wishlists}}
+                <!-- 한달락 -->
+            {{/wishlists}}
         </div>
 
 
@@ -126,5 +119,6 @@
     }
 </script>
 </body>
+
 
 </html>
