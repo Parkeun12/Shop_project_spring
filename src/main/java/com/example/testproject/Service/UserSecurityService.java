@@ -23,14 +23,6 @@ public class UserSecurityService implements UserDetailsService {
     @Autowired
     private UserRepository userRepository;
 
-//    @Override
-//    public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-//        Optional<Users> _user = this.userRepository.findByUsername(username);
-//        return _user
-//                .map(PrincipalDetails::new)
-//                .orElse(null);
-//    }
-
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
         Optional<Users> _user = this.userRepository.findByUsername(username);
