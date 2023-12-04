@@ -35,18 +35,9 @@ public class WishlistController {
     // 관심상품 리스트 보여주는 매핑
     @GetMapping("/wishlist/{Id}")
     public String wishlist(Model model, @PathVariable Long Id) {
-//        // 현재 로그인한 사용자의 ID를 가져온다
-//        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-//        String currentUserId = authenticatio n.getName();
 
-//        ArrayList<Product> productWishlist = productRepository.findProductNameProductPrice();
-//        model.addAttribute("wishlists", productWishlist);
-
-//         현재 로그인한 사용자의 관심상품 가져오기
-//        ArrayList<Product> productWishlist = productRepository.findProductNameProductPriceByUserId(currentUserId);
-
-        // 1. 전달받은 id 값으로 조회 > 데이터 가져오기
-        ArrayList<Product> wishlistEntity = productRepository.findProductNameProductPriceByUserId(Id);
+        // 전달받은 id 값으로 조회 > 데이터 가져오기
+        ArrayList<Product> wishlistEntity = productRepository.findWishlistIdProductNameProductPriceByUserId(Id);
 
         model.addAttribute("wishlists", wishlistEntity);
 
@@ -95,23 +86,6 @@ public class WishlistController {
 //     관심상품 삭제 기능
     @GetMapping("/wishlist/{wishlistId}/delete")
     public String deleteWishlistItem(@PathVariable Long wishlistId) {
-////        // 현재 인증된 사용자의 정보를 가져오기
-////        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-////        String currentUserId = authentication.getName();
-//
-//        // 현재 사용자가 선택한 상품을 Wishlist에서 찾기
-////        ArrayList<Product> wishlistEntity = productRepository.findProductNameProductPriceByUserId(Id);
-//
-//        Wishlist DeleteTarget = wishlistRepository.findById(wishlistId).orElse(null);
-//
-//        if(DeleteTarget != null)
-//        {
-//            //삭제 대상이 존재할 경우에만(null이 아닌경우) 삭제
-//            wishlistRepository.delete(DeleteTarget);
-//        }
-//
-//        // 결과화면 리다이렉트
-//        return "redirect:/wishlist/{Id}";
 
         // WishlistRepository에서 Wishlist를 가져오기
         Optional<Wishlist> wishlistOptional = wishlistRepository.findById(wishlistId);
@@ -120,7 +94,7 @@ public class WishlistController {
         if (wishlistOptional.isPresent()) {
             Wishlist wishlist = wishlistOptional.get();
 
-            // Wishlist에서 상품 정보 가져오기
+            // Wishlist에서 상품 정보 가져오기 //필요한가?
             Product product = wishlist.getProduct();
 
             // Wishlist에서 상품 삭제
