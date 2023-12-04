@@ -31,8 +31,4 @@ public class PopupController {
         return "articles/payment_popup";
     }
 
-    @GetMapping("/mainshop/zzim_popup")
-    public String MainShop_popup2(){
-        return "articles/zzimPopup";
-    }
 }

@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<!--    임시추가 없어서? 일단-->
+    <link href="/css/mains.css" rel="stylesheet" type="text/css">
+    <link href="/css/wishlist.css" rel="stylesheet" type="text/css">
+    <link href="/css/side.css" rel="stylesheet" type="text/css">
+    <title>관심 상품</title>
+    <script src="js/jquery-3.7.0.min.js"></script>
+</head>
+
+<body>
+<header>
+    <nav class="icon_side">
+        <div>
+            <div class="icon_member">
+                <a href="#">
+                    <img src="/img/memberB.png" alt="member">
+                </a>
+            </div>
+            <div class="icon_basket">
+                <a href="#">
+                    <img src="/img/basket.png" alt="basket">
+                </a>
+            </div>
+        </div>
+    </nav>
+    <div class="clear"></div>
+</header>
+
+<section>
+    {{>layouts/leftside}}
+    <!--오른쪽사이드-->
+    <article class="right_main_view">
+        <!-- 관심 상품 -->
+
+        <div class="cart">
+            <h3>관심상품</h3>
+            <div class="bar"></div>
+{{#wishlists}}
+            <!-- 한달락 -->
+            <div class="row-data">
+                <div class="img">
+                    <img src="/img/BOTTOM/{{productImg}}">
+                </div>
+                <div class="mid-info">
+                    <div class="name">
+                        <!-- 상품 상세페이지로 이동 나중에 추가 -->
+<!--                        <a href="productDetailsMore.html">-->
+                            <span>{{productName}}</span>
+<!--                        </a>-->
+                        <!-- 삭제 버튼 -->
+                        <button class="box" onclick="none()">
+                            x
+                        </button>
+                    </div>
+                    <!-- 상품 가격 + 배송비 -->
+                    <div class="price">
+                        <span>가격 : {{productPrice}}(원)</span>
+                    </div>
+                    <!-- <a onclick="showPopup();">
+                      <div class="basket">
+                        <button>장바구니</button>
+                      </div>
+                    </a> -->
+                </div>
+            </div>
+            <!-- 한달락 -->
+    {{/wishlists}}
+        </div>
+
+
+        <div id="footer">
+            <div class="shop_footer">
+                <div class="textBox">
+                    <h1>
+                        Footer 영역
+                    </h1>
+                </div>
+            </div>
+        </div>
+        <div class="clear"></div>
+    </article>
+</section>
+
+<script>
+    //메인 사이드 슬라이드
+    jQuery(document).ready(function () {
+      $('.navi>li').mouseover(function () {
+        $(this).find('.submenu').stop().slideDown(500);
+      }).mouseout(function () {
+        $(this).find('.submenu').stop().slideUp(500);
+      });
+    });
+
+    // 상품 전체 선택
+    function selectAll(selectAll) {
+      const checkboxes
+        = document.querySelectorAll('input[type="checkbox"]');
+
+      checkboxes.forEach((checkbox) => {
+        checkbox.checked = selectAll.checked
+      })
+    }
+    //수량 버튼 조작
+    let quantity = $(".quantity_input").val();
+    $(".plus_btn").on("click", function () {
+      $(".quantity_input").val(++quantity);
+    });
+    $(".minus_btn").on("click", function () {
+      if (quantity > 1) {
+        $(".quantity_input").val(--quantity);
+      }
+    });
+    // 상품 삭제 버튼
+    function none() {
+      document.querySelector(".row-data").style.display = "none";
+    }
+
+    // 장바구니 팝업
+    function showPopup() {
+      window.open("cart_popup2.html", "관심상품_장바구니팝업", "width=400, height=450, left=700, top=150");
+    }
+</script>
+</body>
+
+</html>

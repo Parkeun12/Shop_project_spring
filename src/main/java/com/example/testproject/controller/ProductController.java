@@ -7,6 +7,7 @@ import com.example.testproject.repository.ProductRepository;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.Banner;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -35,9 +36,9 @@ public class ProductController {
 
     // 상품 등록 (post) <pro 이름 변경 여부>
     @PostMapping("/product/create")
-<<<<<<< Updated upstream
+
     public String createProduct(ProductForm form){
-=======
+
     public String createProduct(@ModelAttribute ProductForm form, @RequestParam("productImg") MultipartFile file){
 
         try {
@@ -48,10 +49,8 @@ public class ProductController {
             e.printStackTrace();
         }
 
+    public String createProduct(ProductForm form, Model model){
 
-
-
->>>>>>> Stashed changes
         log.info(form.toString());
         //1. DTO > Entity로 변환
         Product product = form.toEntity();
