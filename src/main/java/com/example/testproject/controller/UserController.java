@@ -42,7 +42,7 @@ public class UserController {
         }
 
         if(!userFormDto.getPassword().equals(userFormDto.getPassword2())) {
-            bindingResult.rejectValue("password2", "passwordInCorrect","패스워드가 일치하지 않습니다.");
+            bindingResult.rejectValue("password2", "passwordInCorrect","비밀번호가 일치하지 않습니다.");
             return "articles/join";
         }
 
@@ -63,10 +63,15 @@ public class UserController {
 
 //    로그인 데이터 보내기
     @GetMapping(value = "/login")
-    public String loginUser(String username) {
-        log.info(username);
+    public String loginUser() {
         return "articles/login";
     }
+
+//    @GetMapping(value = "/login/error")
+//    public String loginError(Model model) {
+//        model.addAttribute("loginErrorMsg", "아이디 또는 비밀번호를 확인해주세요.");
+//        return "/articles/login";
+//    }
 
 //  로그인 post는 시큐리티가 처리함(인증)
     @GetMapping("/logout")
