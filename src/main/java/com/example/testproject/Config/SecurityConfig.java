@@ -35,7 +35,7 @@ public class SecurityConfig {
                 )
                 .formLogin(login -> login
                         .loginPage("/users/login").permitAll() //로그인페이지 URL
-                        .defaultSuccessUrl("/mainshop") //로그인 성공시 이동할 페이지
+                        .defaultSuccessUrl("/mainshop", true) //로그인 성공시 이동할 페이지
                         .usernameParameter("username") // 로그인시 사용할 파라미터 이름 설정
                         .failureUrl("/users/login/error") // 로그인 실패시 이동할 URL
                 )

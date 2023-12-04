@@ -1,17 +1,17 @@
 package com.example.testproject.entity;
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.ToString;
+import lombok.*;
+
+import java.util.ArrayList;
+import java.util.List;
 
 @AllArgsConstructor
 @NoArgsConstructor
 @ToString
 @Entity
 @Getter
-//@Getter
+@Setter
 public class Product {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -35,19 +35,17 @@ public class Product {
     @Column(name = "product_size")
     private String productSize;
 
-//    //내용 보존을 위한(부분수정)메소드
-//    public void patch(Product product){
-//        if(product.productName != null)
-//            this.productName = product.productName;
-////        if(product.productPrice != null)
-////            this.productPrice = product.productPrice;
-//        if(product.productImg != null)
-//            this.productImg = product.productImg;
-//        if(product.productTxt != null)
-//            this.productTxt = product.productTxt;
-//        if(product.productColor != null)
-//            this.productColor = product.productColor;
-//        if(product.productSize != null)
-//            this.productSize = product.productSize;
-//    }
+    //Wishlist와 양방향 매핑
+    @OneToMany(mappedBy = "product")
+    private List<Wishlist> wishlists = new ArrayList<>();
+
+    public Product(Long productNum, String productName, int productPrice, String productImg, String productTxt, String productColor, String productSize) {
+        this.productNum = productNum;
+        this.productName = productName;
+        this.productPrice = productPrice;
+        this.productImg = productImg;
+        this.productTxt = productTxt;
+        this.productColor = productColor;
+        this.productSize = productSize;
+    }
 }

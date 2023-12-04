@@ -1,18 +1,20 @@
 package com.example.testproject.controller;
 
+import com.example.testproject.Service.FileUploadService;
 import com.example.testproject.dto.ProductForm;
 import com.example.testproject.entity.Product;
 import com.example.testproject.repository.ProductRepository;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.Banner;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import java.io.IOException;
 import java.util.ArrayList;
 
 @Slf4j
@@ -23,6 +25,9 @@ public class ProductController {
     @Autowired
     public ProductRepository productRepository;
 
+    @Autowired
+    private FileUploadService fileUploadService;
+
     // 상품 등록 페이지
     @GetMapping("/product/new")
     public String productSave(){
@@ -31,7 +36,21 @@ public class ProductController {
 
     // 상품 등록 (post) <pro 이름 변경 여부>
     @PostMapping("/product/create")
+
     public String createProduct(ProductForm form){
+
+    public String createProduct(@ModelAttribute ProductForm form, @RequestParam("productImg") MultipartFile file){
+
+        try {
+            fileUploadService.uploadFile(file);
+            // 파일 업로드 성공
+        } catch (IOException e) {
+            // 파일 업로드 실패
+            e.printStackTrace();
+        }
+
+    public String createProduct(ProductForm form, Model model){
+
         log.info(form.toString());
         //1. DTO > Entity로 변환
         Product product = form.toEntity();
