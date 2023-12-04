@@ -16,8 +16,8 @@ import lombok.ToString;
 public class WishlistForm {
 
     private Long wishlistId;
-    private Long userId; // Users 엔티티의 ID 대신 직접 사용자 ID를 받음
-    private Long productNum; // Product 엔티티의 productNum 대신 직접 상품 번호를 받음
+    private Long userId;
+    private Long productNum;
 
     public Wishlist toEntity() {
         Users users = new Users();
