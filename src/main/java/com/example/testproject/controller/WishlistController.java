@@ -7,7 +7,6 @@ import com.example.testproject.entity.Wishlist;
 import com.example.testproject.repository.UserRepository;
 import com.example.testproject.repository.WishlistRepository;
 import com.example.testproject.repository.ProductRepository;
-import jakarta.persistence.Id;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -16,7 +15,6 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.ArrayList;
 import java.util.Optional;
@@ -83,46 +81,59 @@ public class WishlistController {
         }
     }
 
-//     관심상품 삭제 기능
 //    @GetMapping("/wishlist/{productNum}/delete")
 //    public String deleteWishlistItem(@PathVariable Long productNum) {
 //
-//        // WishlistRepository에서 Wishlist를 가져오기
-//        Optional<Wishlist> wishlistOptional = wishlistRepository.findById(wishlistId);
+//        // 현재 로그인한 사용자의 정보 가져오기
+//        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+//        // currentUserid > 로그인할 때 사용하는 유저 아이디값 가져옴
+//        String currentUserId = authentication.getName();
 //
-//        // Wishlist가 존재하는지 확인
-//        if (wishlistOptional.isPresent()) {
-//            Wishlist wishlist = wishlistOptional.get();
 //
-//            // Wishlist에서 상품 정보 가져오기 //필요한가?
-//            Product product = wishlist.getProduct();
+//        // 상품 삭제 후 관심상품 페이지로 리다이렉트
+//        return "redirect:/wishlist/";
+//    }
+
+//****************************************************************************
+
+//    @GetMapping("/wishlist/{productNum}/delete")
+//    public String deleteWishlistItem(@PathVariable Long productNum) {
+//        String currentUserId = getCurrentUserId();
 //
-//            // Wishlist에서 상품 삭제
-//            wishlistRepository.deleteById(wishlistId);
+//        Optional<Users> currentUser = userRepository.findByUsername(currentUserId);
 //
-//            // 상품 삭제 후 관심상품 페이지로 리다이렉트
-//            return "redirect:/wishlist/" + wishlist.getUsers().getId();
-//        } else {
-//            // Wishlist가 존재하지 않을 경우
-//            return "redirect:/mainshop";
-//        }
+//        currentUser.ifPresent(user -> {
+//            // WishlistRepository에서 해당하는 Wishlist를 찾아서 삭제
+//            wishlistRepository.deleteByUsersIdAndProductProductNum(user.getId(), productNum);
+//        });
+//
+//        return "redirect:/wishlist/" + currentUserId;
 //    }
 
     @GetMapping("/wishlist/{productNum}/delete")
-    public String deleteWishlistItem(@PathVariable Long productNum) {
+    public String deleteWishlistItem(@PathVariable Long productNum, WishlistForm form) {
+        String currentUserId = getCurrentUserId();
 
-        // 현재 로그인한 사용자의 정보 가져오기
-        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-        String currentUserId = authentication.getName();
+        Optional<Users> currentUser = userRepository.findByUsername(currentUserId);
 
-        // 현재 로그인한 사용자의 Wishlist에서 productNum에 해당하는 항목 삭제
-        wishlistRepository.deleteByUsersUsernameAndProductProductNum(currentUserId, productNum);
+        if (currentUser.isPresent()) {
+            form.setUserId(currentUser.get().getId());
+            // WishlistRepository에서 해당하는 Wishlist를 찾아서 삭제
+            // 디버깅시 id값과 productnum값은 찾음 wishlistid?도 같이 찾아야하나
+            Wishlist DeleteTarget = wishlistRepository.findByUsersAndProductProductNum(currentUser.get().getId(), productNum).orElse(null);
+            // 여기에서 터짐 delete안됨
+            wishlistRepository.delete(DeleteTarget);
+        } else {
+            return "redirect:/mainshop";
+        }
 
-        // 상품 삭제 후 관심상품 페이지로 리다이렉트
         return "redirect:/wishlist/" + currentUserId;
     }
 
 
-    // delete 내 현재 사용자가 선택한 상품 찾기 추후 리스트부분 수정 보완되면 마찬가지로 수정 필요
-
+    private String getCurrentUserId() {
+        // 현재 로그인한 사용자의 정보 가져오기
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        return authentication.getName();
+    }
 }
