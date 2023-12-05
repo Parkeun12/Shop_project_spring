@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -35,15 +35,13 @@
     <div class="h3">
         <h3>회원 가입</h3>
     </div>
-    <form th:action="@{/users/new}" th:object="${userFormDto}" method="post">
-        //임의로 추가함 어디에 이용되는 지 확인해야함
-<!--        <div th:replace="layout::formErrors"></div>-->
+    <form action="/users/new" method="post">
         <table>
             <tr>
                 <th>아이디<span>*</span></th>
                 <td>
                     <div class="id">
-                        <input type="text" size="20" name="username" onfocusout="CheckValue()" id="username" th:field="*{username}"  class="form-control">
+                        <input type="text" size="20" name="username" onfocusout="CheckValue()" id="username">
                         (영문소문자/숫자, 4~16자)
                     </div>
                     <label for="username" id="ID_Chk" style="display: none; color: red; font-size: 13px; font-weight: bold;">
@@ -56,7 +54,7 @@
                 <th>비밀번호<span>*</span></th>
                 <td>
                     <div class="pw">
-                        <input type="password" size="20" name="password" id="password" onfocusout="CheckValue1()" th:field="*{password1}"  class="form-control">
+                        <input type="password" size="20" name="password" id="password" onfocusout="CheckValue1()">
                         (영문 대소문자/숫자/특수문자 중 2가지 이상 조합, 8~16자)
                     </div>
                     <label for="password" id="PASSWORD_Chk" style="display: none; color: red; font-size: 13px; font-weight: bold;">
@@ -69,7 +67,7 @@
                 <th>비밀번호 확인<span>*</span></th>
                 <td>
                     <div class="pw_1">
-                        <input type="password" size="20" name="password2" id="password2" onfocusout="CheckValue2()" th:field="*{password2}"  class="form-control">
+                        <input type="password" size="20" name="password2" id="password2" onfocusout="CheckValue2()">
                     </div>
                     <label for="password2" id="PASSWORD1_Chk" style="display: none; color: red; font-size: 13px; font-weight: bold;">
                         * 필수 입력
@@ -81,7 +79,7 @@
                 <th>이름<span>*</span></th>
                 <td>
                     <div class="name">
-                        <input type="text" size="20" name="name" id="name" onfocusout="CheckValue3()" th:field="*{name}"  class="form-control">
+                        <input type="text" size="20" name="name" id="name" onfocusout="CheckValue3()">
                     </div>
                     <label for="name" id="NAME_Chk" style="display: none; color: red; font-size: 13px; font-weight: bold;">
                         * 필수 입력
@@ -153,7 +151,7 @@
                             <span class="bold2">이용약관 동의</span>
                         </li>
 
-                        <textarea name="" id="">제1조(목적)
+                        <textarea >제1조(목적)
                         이 약관은 회사가 운영하는 nok’ im(이하 “몰”이라 한다)에서 제공하는 인터넷 관련 서비스(이하 “서비스”라 한다)를 이용함에 있어 사이버 몰과 이용자의 권리.의무 및 책임사항을 규정함을 목적으로 합니다.
                         ※「PC통신, 무선 등을 이용하는 전자상거래에 대해서도 그 성질에 반하지 않는 한 이 약관을 준용합니다.」
 
@@ -202,7 +200,7 @@
                             <span class="bold3">개인정보 수집 및 이용 동의</span>
                         </li>
 
-                        <textarea name="" id="">1. 개인정보 수집목적 및 이용목적
+                        <textarea>1. 개인정보 수집목적 및 이용목적
                         가. 서비스 제공에 관한 계약 이행 및 서비스 제공에 따른 요금정산
                         콘텐츠 제공 , 구매 및 요금 결제 , 물품배송 또는 청구지 등 발송 , 금융거래 본인 인증 및 금융 서비스
                         나. 회원 관리
@@ -236,7 +234,7 @@
                             <span class="bold4">쇼핑 정보 수신 동의</span>
                         </li>
 
-                        <textarea name="" id="">여러분을 환영합니다.
+                        <textarea>여러분을 환영합니다.
                         네이버 서비스 및 제품(이하 ‘서비스’)을 이용해 주셔서 감사합니다. 본 약관은 다양한 네이버 서비스의 이용과 관련하여 네이버 서비스를 제공하는 네이버 주식회사(이하 ‘네이버’)와 이를 이용하는 네이버 서비스 회원(이하 ‘회원’) 또는 비회원과의 관계를 설명하며, 아울러 여러분의 네이버 서비스 이용에 도움이 될 수 있는 유익한 정보를 포함하고 있습니다.
 
                         네이버 서비스를 이용하시거나 네이버 서비스 회원으로 가입하실 경우 여러분은 본 약관 및 관련 운영 정책을 확인하거나 동의하게 되므로, 잠시 시간을 내시어 주의 깊게 살펴봐 주시기 바랍니다.
@@ -402,4 +400,4 @@
                     }
                 }
     </script>
-    {{>layouts/footer}}
+{{>layouts/footer}}
