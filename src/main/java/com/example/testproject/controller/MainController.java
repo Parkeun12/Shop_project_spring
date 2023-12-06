@@ -8,9 +8,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
 
 import java.util.ArrayList;
 
@@ -22,7 +19,7 @@ public class MainController {
     @Autowired
     private ProductRepository productRepository;
 
-    @GetMapping("/mainshop")
+    @GetMapping(value = "/mainshop")
     public String MainShop_page(Model model){
 
         ArrayList<Product> productEntityList = productRepository.findAll();
@@ -31,16 +28,13 @@ public class MainController {
 
         return "/articles/Main_page";
     }
+    @GetMapping(value = "/mainshop_user")
+    public String MainShop_user(Model model){
 
-    @GetMapping("/mainshop/{productNum}")
-    public String ProductMorePage(@PathVariable Long productNum, Model model)
-    {
+        ArrayList<Product> productEntityList = productRepository.findAll();
 
-        // @PathVariable로 전달받은 prodcutNum값으로 조회 > 데이터 가져오기
-        Product productEntity = productRepository.findById(productNum).orElse(null);
+        model.addAttribute("mainProduct", productEntityList);
 
-        model.addAttribute("productMore", productEntity);
-
-        return "/articles/productMore";
+        return "/articles/Main_page_user";
     }
 }

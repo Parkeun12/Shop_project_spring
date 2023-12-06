@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="/css/mains.css" rel="stylesheet" type="text/css">
+    <link href="/css/side.css" rel="stylesheet" type="text/css">
+    <title>index</title>
+    <script src="/js/jquery-3.7.0.min.js"></script>
+</head>
+<style>
+    .logouttxt span a{
+         color: #fff;
+         font-size: 15px;
+         font-weight: 400;
+         margin-left: 10px;
+         z-index:3;
+    }
+</style>
+<body>
+<header>
+    <nav class="icon_side">
+        <div>
+            <div class="icon_member">
+                <a href="#">
+                    <img src="/img/memberW.png" alt="member">
+                </a>
+            </div>
+            <div class="icon_basket">
+                <a href="#">
+                    <!--주석-->
+                    <img src="/img/basketW.png" alt="basket">
+                </a>
+            </div>
+
+<!--            안 보이는 거 해결 필요함-->
+            <div class="logouttxt">
+                <a href="/logout" role="button">로그아웃</a>
+            </div>
+
+<!--            ""님 문구 추가-->
+
+        </div>
+    </nav>
+    <div class="clear"></div>
+</header>
+<section>
+    {{>layouts/leftside}}
+    <join class="right_main_view">
+        <!--메인 이미지섹션-->
+        <div class="mainImg">
+            <video src="/img/mainVedio.mp4" autoplay loop muted></video>
+        </div>
+<!--확인 원하면 method 값 get으로 변경해서 가능-->
+        <form action="/wishlist" method="post">
+        <!--상품 섹션-->
+        <div class="product">
+            <ul class="product_list">
+                {{#mainProduct}}
+                    <li class="list">
+                        <div class="container">
+                            <div id="snap">
+
+                                <div class="img_text">
+                                    <p>상품명: {{productName}}</p>
+                                </div>
+                                <div class="img_text">
+                                    <p>색상: {{productColor}}</p>
+                                </div>
+                                <div class="img_text">
+                                    <p>가격: {{productPrice}}원</p>
+                                </div>
+
+                                <div class="product_basket_button">
+<!--                                    <input type="submit" value="관심상품">-->
+                                    <button type="submit" value="{{productNum}}" name="productNum">관심상품</button>
+                                    <a onclick="window.open('/mainshop/payment_popup/{{productNum}}', '바로구매팝업', 'width=400, height=450, left=700, top=150');">
+                                        <div class="product_button">
+                                            <p class="payment">바로구매</p>
+                                        </div>
+                                    </a>
+                                </div>
+                            </div>
+                            <a href="#">
+                                <div class="product_img">
+                                    <img src="http://192.168.2.37/images/b/{{productImg}}" alt="test1" style="width: 354px; height: 540px;">
+                                </div>
+                            </a>
+                        </div>
+                    </li>
+                {{/mainProduct}}
+            </ul>
+        </div>
+        </form>
+        <div id="footer">
+            <div class="shop_footer">
+                <div class="textBox">
+                    <h1>
+                        Footer 영역
+                    </h1>
+                </div>
+            </div>
+        </div>
+    </join>
+</section>
+<script>
+    jQuery(document).ready(function () {
+        $('.navi>li').mouseover(function () {
+            $(this).find('.submenu').stop().slideDown(500);
+        }).mouseout(function () {
+            $(this).find('.submenu').stop().slideUp(500);
+        });
+    });
+
+<!--    function showPopup() {-->
+<!--        window.open("/mainshop/zzim_popup", "찜팝업", "width=450, height=200, left=800, top=300");-->
+<!--    }-->
+</script>
+</body>
+
+</html>

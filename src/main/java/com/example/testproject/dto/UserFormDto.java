@@ -1,7 +1,6 @@
 
 package com.example.testproject.dto;
 
-import com.example.testproject.entity.Product;
 import com.example.testproject.entity.Users;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotEmpty;
@@ -10,6 +9,8 @@ import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
 import org.hibernate.validator.constraints.Length;
+
+import javax.management.relation.Role;
 
 
 @ToString
@@ -41,7 +42,7 @@ public class UserFormDto {
     @NotEmpty(message="이메일은 필수 입력값입니다.")
     private String email;
 
-//    private UserRole role;
+    private Role role;
 
     public Users toEntity(){
         return new Users(id, username, password, password2, name, phone, email);
