@@ -22,7 +22,7 @@ public class AdminController {
 
     @PostMapping(value = "/login")
     public String Login(){
-        return "redirect:/"; //성공 시 메인페이지로 리다이렉트
+        return "redirect:/mainshop"; //성공 시 메인페이지로 리다이렉트
     }
 
     //    로그인 에러 페이지

@@ -28,4 +28,13 @@ public class MainController {
 
         return "/articles/Main_page";
     }
+    @GetMapping(value = "/mainshop_user")
+    public String MainShop_user(Model model){
+
+        ArrayList<Product> productEntityList = productRepository.findAll();
+
+        model.addAttribute("mainProduct", productEntityList);
+
+        return "/articles/Main_page_user";
+    }
 }
