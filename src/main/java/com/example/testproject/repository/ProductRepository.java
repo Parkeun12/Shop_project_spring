@@ -21,4 +21,11 @@ public interface ProductRepository extends JpaRepository<Product, Long> {
             "where w.users_id = :userId", nativeQuery = true)
     ArrayList<Product> findWishlistIdProductNameProductPriceByUserId(@Param("userId") Long userId);
 
+    @Query(value = "select p.product_num, p.product_name, p.product_price, p.product_img, p.product_color, p.product_size, p.product_txt, w.wishlist_id " +
+            "from wishlist w " +
+            "inner join product p " +
+            "on w.product_num=p.product_num " +
+            "where w.users_id = :userId", nativeQuery = true)
+    ArrayList<Product> findProductNameProductPriceByUserId(@Param("userId") Long userId);
+
 }

@@ -1,0 +1,173 @@
+.productDetailsMore{
+    margin-top:2.6315vw;
+    margin-bottom:5.2631vw;
+}
+.productDetailsMoreTop{
+    margin-left:16.8421vw;
+}
+.productDetailsMoreTop .DetailsImage{
+    float:left;
+    margin-right:1.5789vw;
+}
+.productDetailsMoreTop .DetailsImage > .DetailsImageSmall{
+    margin-right:0.5263vw;
+    overflow:hidden;
+    float:left;
+}
+.productDetailsMoreTop .DetailsImage > .DetailsImageSmall > div{
+    width:2.6315vw;
+    height:2.6315vw;
+}
+.productDetailsMoreTop .DetailsImage > .DetailsImageSmall > div:first-of-type{
+    margin-bottom:1.0526vw;
+}
+.productDetailsMoreTop .DetailsImage > .DetailsImageSmall > div img{
+    width:100%;
+}
+.productDetailsMoreTop .DetailsImage > .DetailsImageBig{
+    width:22.0526vw;
+    height:30.0526vw;
+    float:left;
+    overflow:hidden;
+}
+.productDetailsMoreTop .DetailsImage > .DetailsImageBig img{
+    width:100%;
+}
+.productDetailsMoreTop .DetailsTextBox{
+    float:left;
+    width:25.7894vw;
+}
+.productDetailsMoreTop .DetailsTextBox .DetailsTextBoxSub .DetailsTextBoxSubF{
+    display:flex;
+    align-items:center;
+}
+.productDetailsMoreTop .DetailsTextBox .DetailsTextBoxSub .DetailsTextBoxSubF > div{
+    margin-left:0;
+}
+.productDetailsMoreTop .DetailsTextBox .DetailsTextBoxSub .DetailsTextBoxSubF > div:first-child{
+    width:30%;
+    vertical-align:middle;
+}
+.productDetailsMoreTop .DetailsTextBox .DetailsTextBoxSub .DetailsTextBoxSubF > div:last-child{
+    width:70%;
+    text-align:center;
+    margin-left:-3.1578vw;
+}
+.productDetailsMoreTop .DetailsTextBox .DetailsTextBoxSub .DetailsEx{
+    padding:1.0526vw 0;
+}
+.productDetailsMoreTop .DetailsTextBox .DetailsTextBoxSub .DetailsEx > div{
+    width:33%;
+    font-size:10px !important;
+    text-align:center;
+}
+.productDetailsMoreTop .DetailsTextBox .DetailsTextBoxSub > div:nth-of-type(1){
+    padding:0.5263vw 0;
+    font-size:16px;
+    font-family: Arial, Helvetica, sans-serif;
+    border-bottom:1px solid #000;
+}
+.productDetailsMoreTop .DetailsTextBox .DetailsTextBoxSub > div:nth-of-type(2), .productDetailsMoreTop .DetailsTextBox .DetailsTextBoxSub > div:nth-of-type(3), .productDetailsMoreTop .DetailsTextBox .DetailsTextBoxSub > div:nth-of-type(4){
+    padding-top:0.5263vw;
+}
+.productDetailsMoreTop .DetailsTextBox .DetailsTextBoxSub > div:nth-child(4){
+    padding-bottom:0.5263vw;
+    border-bottom:1px solid #000;
+}
+.productDetailsMoreTop .DetailsTextBox .DetailsTextBoxSub > div:nth-child(5){
+    padding:1.0526vw 0;
+    border-bottom:1px solid #000;
+}
+.productDetailsMoreTop .DetailsTextBox .DetailsTextBoxSub p:nth-of-type(1){
+    padding:0.5263vw 0;
+}
+.productDetailsMoreTop .DetailsTextBox .DetailsTextBoxSub p:nth-of-type(2){
+    padding-bottom:0.5263vw;
+}
+.productDetailsMoreTop .DetailsTextBox .DetailsTextBoxSub .DetailsTextBoxSubOp{
+    margin-bottom:1.0526vw;
+}
+.DetailsTextBoxButton > div{
+    width:7.8947vw;
+    float:left;
+    margin-right:1.0526vw;
+}
+.DetailsTextBoxButton > div:last-child{
+    margin-right:0;
+}
+.DetailsTextBoxButton > div a{
+    display:block;
+    height:100%;
+    border:1px solid #000;
+    text-align:center;
+    font-size:12px;
+    font-weight:bold;
+}
+
+.productDetailsMoreMiddle{
+    width:41.0526vw;
+    padding-top:5.2631vw;
+    height:26.3157vw;
+    overflow:hidden;
+}
+.productDetailsMoreMiddle img{
+    width:100%;
+}
+.productInfoShow{
+    text-align:center;
+    width:41.0526vw;
+    background-color:#000;
+    cursor: pointer;
+    color:#fff;
+    padding:1.0526vw 0;
+    margin-top:1.0526vw;
+    margin-bottom:1.0526vw;
+    display:block;
+}
+.productInfoHide{
+    text-align:center;
+    width:41.0526vw;
+    background-color:#000;
+    cursor: pointer;
+    color:#fff;
+    padding:1.0526vw 0;
+    margin-top:1.0526vw;
+    margin-bottom:1.0526vw;
+    display:none;
+}
+.productInfoOffer{
+    width:41.0526vw;
+    margin-bottom:3.6842vw;
+}
+.TermsOfTransaction{
+    width:41.0526vw;
+}
+.productInfoOffer > h4, .TermsOfTransaction > h4{
+    margin-bottom:1.0526vw;
+}
+.productInfoOffer > div, .TermsOfTransaction > div{
+    border:1px solid #000;
+    padding:1.0526vw;
+    height:6.3157vw;
+    overflow-x: hidden;
+    overflow-y: scroll;
+}
+.recommendProduct{
+    width:41.0526vw;
+    margin-bottom:5.2631vw;
+}
+.recommendProduct .recommendProductBox{
+    width:7.8947vw;
+    height:7.8947vw;
+    display:inline-block;
+}
+.recommendProduct .recommendProductBox > .recommendProductBoxImg{
+    height:70%;
+    overflow:hidden;
+}
+.recommendProduct .recommendProductBox img{
+    width:100%;
+}
+.recommendProduct .recommendProductBox > .recommendProductBoxText{
+    text-align:center;
+}

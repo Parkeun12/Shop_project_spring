@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="/css/mains.css" rel="stylesheet" type="text/css">
+    <link href="/css/side.css" rel="stylesheet" type="text/css">
+    <link href="/css/productMore.css" rel="stylesheet" type="text/css">
+    <title>index</title>
+    <script src="/js/jquery-3.7.0.min.js"></script>
+    <script src="/js/productDetailsMore.js"></script>
+</head>
+
+<body>
+<header>
+    <nav class="icon_side">
+        <div>
+            <div class="icon_member">
+                <a href="#">
+                    <img src="/img/memberB.png" alt="member">
+                </a>
+            </div>
+            <div class="icon_basket">
+                <a href="#">
+                    <img src="/img/basket.png" alt="basket">
+                </a>
+            </div>
+        </div>
+    </nav>
+</header>
+
+<section>
+    {{>layouts/leftside}}
+    <!--오른쪽사이드-->
+    <article class="right_main_view">
+        <!--상품 섹션카테고리별 등록-->
+        <div class="productDetailsMore">
+            <div class="productDetailsMoreTop">
+                <form action = "/cart" method="post">
+{{#productMore}}
+                <div class="DetailsImage">
+                    <div class="DetailsImageSmall">
+                        <div class="DetailsImageSmall1">
+                            <img src="http://192.168.2.37/images/b/{{productImg}}" onmouseover="BigImgChange1()" onmouseout="BigImgBack()">
+                        </div>
+                        <div class="DetailsImageSmall2">
+                            <img src="http://192.168.2.37/images/b/{{productImg}}" onmouseover="BigImgChange2()" onmouseout="BigImgBack()">
+                        </div>
+                    </div>
+                    <div class="DetailsImageBig">
+                        <img id="BigImg" src="http://192.168.2.37/images/b/{{productImg}}">
+                    </div>
+                </div>
+                <div class="DetailsTextBox">
+                    <div class="DetailsTextBoxSub">
+                        <div class="DetailsTextBoxSubF">
+                            <div>{{productName}}</div>
+                            <div>{{productTxt}}</div>
+                        </div>
+                        <div class="DetailsTextBoxSubF">
+                            <div>Price</div>
+                            <div>{{productPrice}} Won</div>
+                        </div>
+                        <div class="DetailsTextBoxSubF">
+                            <div>Color</div>
+                            <div>{{productColor}}</div>
+                        </div>
+                        <div class="DetailsTextBoxSubF">
+                            <div>Size</div>
+                            <div>{{productSize}}</div>
+                        </div>
+                        <div class="DetailsTextBoxSubF">
+                            <div>배송</div>
+                            <div></div>
+                        </div>
+                        <p>
+                            택배
+                        </p>
+                        <p>
+                            3,000원(50,000원 이상 구매시 무료)
+                        </p>
+                        <div class="DetailsTextBoxSubOp">
+                            <div class="size">
+                                <select style="width:100%;padding:0.5263vw 0 0.5263vw 1.0526vw;"
+                                name="size_domain" id="size_select">
+                                    <option>[필수] 옵션을 선택해주세요.</option>
+                                    <option value="S">S</option>
+                                    <option value="M">M</option>
+                                    <option value="L">L</option>
+                                </select>
+                                <input type="hidden" id="totalsize" name="size" value="">
+                            </div>
+                        </div>
+                        <div class="DetailsTextBoxSubOp" style="margin-bottom:0;">
+                            <form>
+                                <div class="count">
+                                    <input id="amount" name="amount" type="num" value="1"
+                                           style="max-width: 3rem"/>
+                                </div>
+                            </form>
+                        </div>
+<!--                        <div class="DetailsTextBoxSubF DetailsEx">-->
+<!--                            <div>-->
+<!--                                상품명 / 사이즈 / 색상-->
+<!--                            </div>-->
+<!--                            <div>-->
+<!--                                수량-->
+<!--                            </div>-->
+<!--                            <div>-->
+<!--                                가격-->
+<!--                            </div>-->
+<!--                        </div>-->
+                        <div class="DetailsTextBoxButton">
+                            <div>
+                                <a href="#">
+                                    <p>구매하기</p>
+                                </a>
+                            </div>
+                            <div>
+                                <!--장바구니 링크 연결 필요-->
+                                <a href="#">
+                                    <p>장바구니</p>
+                                </a>
+                            </div>
+                            <div>
+                                <!--관심상품 링크 연결 필요-->
+                                <a href="#">
+                                    <p>관심상품</p>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="clear"></div>
+    {{/productMore}}
+                </form>
+            </div>
+            <div class="productDetailsMoreMiddle">
+                <img src="images/CommonProduct.png">
+            </div>
+            <div class="productInfoShow" onclick="productDetailsMoreMiddleShow()">
+                상세정보 펴기
+            </div>
+            <div class="productInfoHide" onclick="productDetailsMoreMiddleHide()">
+                상세정보 접기
+            </div>
+            <div class="recommendProduct">
+
+                <!--추천상품1-->
+                <div class="recommendProductBox">
+                    <div class="recommendProductBoxImg">
+                        <img src="images/TOP/TopImg1_1.jpg">
+                    </div>
+                    <div class="recommendProductBoxText">
+                        <h5>
+                            <!--상품이름-->
+                            abcde
+                        </h5>
+                        <h6>
+                            <!--상품가격-->
+                            00.000 won
+                        </h6>
+                    </div>
+                </div>
+                <!--추천상품2-->
+                <div class="recommendProductBox">
+                    <div class="recommendProductBoxImg">
+                        <img src="images/TOP/TopImg1_2.jpg">
+                    </div>
+                    <div class="recommendProductBoxText">
+                        <h5>
+                            <!--상품이름-->
+                            abcde
+                        </h5>
+                        <h6>
+                            <!--상품가격-->
+                            00.000 won
+                        </h6>
+                    </div>
+                </div>
+                <!--추천상품3-->
+                <div class="recommendProductBox">
+                    <div class="recommendProductBoxImg">
+                        <img src="images/TOP/TopImg2.jpg">
+                    </div>
+                    <div class="recommendProductBoxText">
+                        <h5>
+                            <!--상품이름-->
+                            abcde
+                        </h5>
+                        <h6>
+                            <!--상품가격-->
+                            00.000 won
+                        </h6>
+                    </div>
+                </div>
+                <!--추천상품4-->
+                <div class="recommendProductBox">
+                    <div class="recommendProductBoxImg">
+                        <img src="images/TOP/TopImg2_1.jpg">
+                    </div>
+                    <div class="recommendProductBoxText">
+                        <h5>
+                            <!--상품이름-->
+                            abcde
+                        </h5>
+                        <h6>
+                            <!--상품가격-->
+                            00.000 won
+                        </h6>
+                    </div>
+                </div>
+                <!--추천상품5-->
+                <div class="recommendProductBox">
+                    <div class="recommendProductBoxImg">
+                        <img src="images/TOP/TopImg2_2.jpg">
+                    </div>
+                    <div class="recommendProductBoxText">
+                        <h5>
+                            <!--상품이름-->
+                            abcde
+                        </h5>
+                        <h6>
+                            <!--상품가격-->
+                            00.000 won
+                        </h6>
+                    </div>
+                </div>
+
+            </div>
+            <div class="productInfoOffer">
+                <h4>상품정보 제공 고시</h4>
+                <div>
+                    Ⅰ. 목 적
+
+                    이 고시는 「전자상거래 등에서의 소비자보호에 관한 법률」(이하 ‘법’이라 한다) 제13조제4항의 규정에 따라 통신판매업자가 소비자에게 제공(표시ㆍ광고 또는 고지를 말한다.
+                    이하 같다)하여야 할 재화 등의 정보에 관한 사항과 거래조건에 관한 정보(이하 ‘상품 등의 정보’라 한다)의 내용과 제공 방법을 구체적으로 제시함으로써 소비자가 전자상거래
+                    등을 함에 있어 합리적인 선택을 하도록 기여하고 정보부족으로 인한 소비자피해를 사전에 예방하는데 그 목적이 있다.
+
+                    　
+
+                    Ⅱ. 일반원칙
+
+                    1. 통신판매업자가 통신판매의 수단을 통하여 상품을 판매하는 때에는 계약체결 전에 III. 상품 등의 정보의 내용의 1. 품목별 재화 등에 관한 정보에서 해당되는 품목의
+                    정보와 2. 거래조건에 관한 정보를 상품에 관한 정보를 제공하는 통신판매의 수단에 표시ㆍ광고하거나 고지하여야 한다. 단, 카탈로그 쇼핑으로서 카탈로그에 해당 정보를 제공할
+                    수 없는 경우, 소비자가 정보를 확인할 수 있는 방법을 표시한 후 전화 또는 인터넷 홈페이지를 통해 상품 등의 정보를 제공하여야 한다.
+
+                    2. 품목별 재화 등에 관한 정보는 판매하는 상품의 특성, 기능 및 효용의 유사성, 소비자들의 인식 등을 고려하여 가급적 유사하다고 판단되는 품목에 기재되어 있는 항목에
+                    대한 정보를 제공하여야 한다. 다만, (1)부터 (38)까지의 품목 가운데 유사한 품목이 없는 경우 (39) 기타 용역 또는 (40) 기타 재화 품목에 기재되어 있는 항목에
+                    대한 정보를 제공하여야 한다.
+
+                    3. 통신판매업자가 정보를 제공할 수 없는 항목이 있는 경우 그 구체적인 사유를 제시하고, 그에 준하는 정보를 제공하도록 노력하여야 한다.
+
+                     제조연월일 : 생산지에서 직접 배송되므로 고객님께 배송될 상품의 제조연월일이 파악되지 않습니다. 단, 주문일로부터 3일 이내에 생산된 제품이 배송됩니다. 정확한
+                        제조연월일을 확인하시려면 생산자(전화번호)에게 문의하시기 바랍니다.
+
+                        4. 품목별 재화 등에 관한 정보 항목 중 제조연월, 제조연월일, 유통기한, 사용기한, 품질유지기한, 소비기한의 경우 다음의 내용으로 대신하여 제공할 수 있다.
+
+                        가. 통신판매업자가 판매를 위해 보유하고 있는 동일 상품의 제조연월, 제조연월일, 유통기한, 사용기한, 품질유지기한, 소비기한 중 가장 빠른 날짜
+
+                        나. 보유한 동일 상품 전체의 제조연월, 제조연월일, 유통기한, 사용기한, 품질유지기한, 소비기한의 범위
+                </div>
+            </div>
+            <div class="TermsOfTransaction">
+                <h4>거래조건에 관한 정보</h4>
+                <div>
+                    가. 재화등의 공급방법 및 공급시기
+
+                    1) 재화등의 배송방법에 관한 정보
+
+                    2) 주문 이후 예상되는 배송기간
+
+                    3) 배송비용 (도서산간지역 추가비용 포함)
+
+                    나. 청약철회 및 계약해제에 관한 사항
+
+                    1) 제품하자가 아닌 소비자의 단순변심에 따른 청약철회등의 경우 청약철회등의 기한 및 소비자가 부담하는 반품비용 등에 관한 정보
+
+                    img118005759
+
+                    2) 제품하자가 아닌 소비자의 단순변심에 따른 청약철회가 불가능한 경우 그 구체적 사유와 근거
+
+                    3) 제품하자ㆍ오배송 등에 따른 청약철회등의 경우 청약철회등의 기한 및 통신판매업자가 부담하는 반품비용 등에 관한 정보
+
+                    다. 재화등의 교환ㆍ반품ㆍ보증과 그 대금 환불 및 환불의 지연에 따른 배상금 지급의 조건ㆍ절차
+
+                    1) 재화등의 교환ㆍ반품ㆍ보증 조건 및 품질보증기준
+
+                    2) 재화등의 A/S 관련 전화번호
+
+                    3) 대금을 환불받기 위한 방법과 환불이 지연될 경우 지연배상금을 지급받을 수 있다는 사실 및 지연배상금 지급의 구체적인 조건ㆍ절차
+
+                    라. 소비자피해보상의 처리, 재화등에 대한 불만처리 및 소비자와 사업자 사이의 분쟁처리에 관한 사항
+
+                    마. 거래에 관한 약관의 내용 또는 확인할 수 있는 방법
+
+                    　
+
+                    IV. 상품 등의 정보 제공 방법
+
+                    1. 소비자에게 제공되는 상품 등의 정보는 색상의 차별화, 테두리의 이
+                </div>
+            </div>
+        </div>
+
+        <div id="footer">
+            <div class="shop_footer">
+                <div class="textBox">
+                    <h1>
+                        Footer 영역
+                    </h1>
+                </div>
+            </div>
+        </div>
+        <div class="clear"></div>
+    </article>
+</section>
+
+<script>
+    jQuery(document).ready(function () {
+        $('.navi>li').mouseover(function () {
+            $(this).find('.submenu').stop().slideDown(500);
+        }).mouseout(function () {
+            $(this).find('.submenu').stop().slideUp(500);
+        });
+
+
+                    function size() {
+                    const size = $("#size_select").val();
+                    if(size != "") {
+                        $("#totalsize").val(size);
+                    }
+                };
+</script>
+</body>
+
+</html>

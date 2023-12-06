@@ -45,10 +45,6 @@ public class ProductController {
             // 파일 업로드 실패
             e.printStackTrace();
         }
-
-
-
-
         log.info(form.toString());
         //1. DTO > Entity로 변환
         Product product = form.toEntity();

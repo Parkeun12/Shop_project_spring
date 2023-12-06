@@ -44,7 +44,7 @@ public class WishlistController {
     }
 
     @PostMapping("/wishlist")
-    public String createWishlist(WishlistForm form, Model model) {
+    public String createWishlist(WishlistForm form) {
         // 현재 로그인한 사용자의 정보 가져오기
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         String currentUserId = authentication.getName();

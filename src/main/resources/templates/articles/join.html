@@ -115,9 +115,10 @@
                 <th>이메일<span>*</span></th>
                 <td>
                     <div class="email">
-                        <input type="text" size="15" name="email" id="email" onfocusout="CheckValue5()"><span id="middle" style="color : black;">@</span>
-                        <select name="email_domain" id="user_email_address">
+                        <input type="text" size="15" name="email" id="email" onfocusout="CheckValue5()">
+                        <span id="middle" style="color : black;">@</span>
 
+                        <select name="email_domain" id="user_email_address">
                             <option value="">직접 입력</option>
                             <option value="naver.com">naver.com</option>
                             <option value="google.com">google.com</option>
@@ -367,9 +368,6 @@
                     })
                   }
         <!--//이메일주소 가져오기-->
-        <!--    //   $("#email").blur(function(){-->
-        <!--    //        email();-->
-        <!--    //   });-->
 
                 $("#user_email_address").change(function(){
                     email();
