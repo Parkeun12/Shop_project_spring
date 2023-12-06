@@ -10,6 +10,7 @@ import com.example.testproject.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -18,6 +19,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import java.util.ArrayList;
 import java.util.Optional;
 
+@Controller
 public class CartController {
 
     @Autowired
@@ -65,13 +67,13 @@ public class CartController {
     }
 
     @GetMapping("/cart/{Id}")
-    public String cart(Model model, @PathVariable Long id){
+    public String cart(Model model, @PathVariable Long Id){
 
         // 전달받은 id 값으로 조회 > 데이터 가져오기
-        ArrayList<Product> wishlistEntity = productRepository.findProductNameProductPriceByUserId(Id);
+        ArrayList<Product> cartEntity = productRepository.findCartIdProductNameProductPriceByUserId(Id);
 
         //cart.mustache에 뿌려줘야함 추후 수정 필요 <wishlists, wishlistEntity>
-        model.addAttribute("wishlists", wishlistEntity);
+        model.addAttribute("carts", cartEntity);
 
         return "articles/cart";
     }

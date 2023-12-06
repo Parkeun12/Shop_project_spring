@@ -49,7 +49,7 @@
                         </div>
                     </div>
                     <div class="DetailsImageBig">
-                        <img id="BigImg" src="http://192.168.2.37/images/b/{{productImg}}">
+                        <img id="BigImg" src="http://192.168.250.43/images/b/{{productImg}}">
                     </div>
                 </div>
                 <div class="DetailsTextBox">
@@ -119,9 +119,7 @@
                             </div>
                             <div>
                                 <!--장바구니 링크 연결 필요-->
-                                <a href="#">
-                                    <p>장바구니</p>
-                                </a>
+                                <button type="submit" value="{{productNum}}" name="productNum">장바구니</button>
                             </div>
                             <div>
                                 <!--관심상품 링크 연결 필요-->
@@ -325,13 +323,16 @@
             $(this).find('.submenu').stop().slideUp(500);
         });
 
+        $("#size_select").change(function(){
+            size();
+        });
 
-                    function size() {
-                    const size = $("#size_select").val();
-                    if(size != "") {
-                        $("#totalsize").val(size);
-                    }
-                };
+        function size() {
+        const size = $("#size_select").val();
+            if(size != "") {
+                $("#totalsize").val(size);
+            }
+        };
 </script>
 </body>
 

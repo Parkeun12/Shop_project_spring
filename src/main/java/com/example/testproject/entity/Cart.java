@@ -11,6 +11,10 @@ import lombok.*;
 @Setter
 public class Cart {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long cartId;
+
     //회원 아이디 양방향 매핑
     @ManyToOne
     @JoinColumn(name = "users_id")
