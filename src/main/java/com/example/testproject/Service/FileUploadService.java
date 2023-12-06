@@ -15,7 +15,7 @@ public class FileUploadService {
 
     public void uploadFile(MultipartFile file) throws IOException {
 
-        String uploadDirectory = "\\\\\\\\192.168.2.37\\\\images\\\\b\\\\";
+        String uploadDirectory = "\\\\\\\\192.168.250.43\\\\images\\\\b\\\\";
         // 상대 경로 설정
         Path uploadPath = Paths.get(uploadDirectory).toAbsolutePath().normalize();
 

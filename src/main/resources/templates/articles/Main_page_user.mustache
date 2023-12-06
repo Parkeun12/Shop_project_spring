@@ -9,7 +9,15 @@
     <title>index</title>
     <script src="/js/jquery-3.7.0.min.js"></script>
 </head>
-
+<style>
+    .logouttxt span a{
+         color: #fff;
+         font-size: 15px;
+         font-weight: 400;
+         margin-left: 10px;
+         z-index:3;
+    }
+</style>
 <body>
 <header>
     <nav class="icon_side">
@@ -27,8 +35,8 @@
             </div>
 
 <!--            안 보이는 거 해결 필요함-->
-            <div style="z-index:10px; width:30px; height:20ox; position:relative;">
-                <span style="color:#fff; font-size:15px;"><a href="/mainshop">로그아웃</a></span>
+            <div class="logouttxt">
+                <a href="/logout" role="button">로그아웃</a>
             </div>
 
 <!--            ""님 문구 추가-->
