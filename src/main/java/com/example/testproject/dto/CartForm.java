@@ -18,6 +18,7 @@ public class CartForm {
     private Long cartId;
     private Long userId;
     private Long productNum;
+    private int count;
 
     public Cart toEntity() {
         Users users = new Users();
@@ -26,6 +27,6 @@ public class CartForm {
         Product product = new Product();
         product.setProductNum(productNum);
 
-        return new Cart(cartId, users, product);
+        return new Cart(cartId, users, product, count);
     }
 }

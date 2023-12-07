@@ -24,4 +24,11 @@ public class Cart {
     @ManyToOne
     @JoinColumn(name = "product_num")
     private Product product;
+
+    //장바구니에 담을 수량 체크
+    private int count;
+
+    public void addCount(int count) {
+        this.count += count;
+    }
 }

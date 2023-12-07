@@ -38,7 +38,7 @@ public class MainController {
 
         return "/articles/Main_page_user";
     }
-    
+
     @GetMapping("/mainshop/{productNum}")
     public String ProductMorePage(@PathVariable Long productNum, Model model)
     {

@@ -37,12 +37,13 @@
         <h3>장바구니</h3>
         <div class="check"><input type="checkbox" name="checkBox" onclick='selectAll(this)'> 모두 선택</div>
 
+        {{#carts}}
         <div class="row-data">
             <div class="check2"><input type="checkbox" name="checkBox"></div>
-            <div class="img"><img src="/img/TOP/TopImg2.jpg"></div>
+            <div class="img"><img src="http://192.168.250.43/images/b/{{productImg}}"></div>
             <div class="mid-info">
                 <div class="name">
-                    <span>상품명1</span>
+                    <span>{{productName}}</span>
                     <!-- 삭제 버튼 -->
                     <button class="box" onclick="none()">
                         x
@@ -51,24 +52,26 @@
                 <!-- 상품 옵션  -->
                 <!-- 옵션변경 팝업 추가 -->
                 <div class="option">
-                    <span>[옵션 : BLACK]</span>
+                    <span>[옵션 : {{productSize}}]</span>
                     <span><a href="#">옵션변경</a></span><br />
                 </div>
                 <!-- 상품 수량 -->
                 <div class="count">
               <span>
                 <button class="minus_btn">-</button>
+<!--                  count를 받아와야할 것 같은데 product내에 count 없음-->
                 <input type="text" class="quantity_input" value="1">
                 <button class="plus_btn">+</button>
               </span>
                 </div>
                 <!-- 상품 가격 + 배송비 -->
                 <div class="price">
-                    <span>가격 : (원)</span>
+                    <span>가격 : {{productPrice}}(원)</span>
                     <span>배송 : 기본 배송 / 무료</span>
                 </div>
             </div>
         </div>
+        {{/carts}}
         <!-- 총 주문 금액과 구매하기 버튼 -->
         <div class="total">
             <span>주문 금액</span>

@@ -6,4 +6,5 @@ import org.springframework.data.jpa.repository.JpaRepository;
 public interface CartRepository extends JpaRepository<Cart, Long> {
     boolean existsByUsersUsernameAndProductProductNum(String username, Long productNum);
 
+
 }

@@ -30,7 +30,7 @@ public class CartController {
     private UserRepository userRepository;
 
     @PostMapping("/cart")
-    public String createCart(CartForm form) {
+    public String createCart(CartForm form, int count) {
 
         // 현재 로그인한 사용자의 정보 가져오기
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
@@ -47,6 +47,7 @@ public class CartController {
                 // CartForm에 현재 사용자의 ID를 설정
                 form.setUserId(currentUser.get().getId());
                 form.getProductNum();
+                form.setCartId(cartRepository.count());
 
                 // CartForm을 Cart 엔티티로 변환
                 Cart cart = form.toEntity();
@@ -60,8 +61,9 @@ public class CartController {
                 return "redirect:/users/login"; // 로그인 페이지로 리다이렉트
             }
         } else {
-            // 이미 장바구니에 들어있다면 상품상세페이지로 다시 redirect
-            // 이미 장바구니에 담겨있는 상품입니다. < 팝업이나 alert추가 필요
+            // 이미 장바구니에 들어있다면 상품 개수 추가 <cart에 int count 추가해둠> 구현필요
+
+
             return "redirect:/mainshop/{productNum}";
         }
     }
@@ -72,9 +74,13 @@ public class CartController {
         // 전달받은 id 값으로 조회 > 데이터 가져오기
         ArrayList<Product> cartEntity = productRepository.findCartIdProductNameProductPriceByUserId(Id);
 
-        //cart.mustache에 뿌려줘야함 추후 수정 필요 <wishlists, wishlistEntity>
+        //proudct 정보값들 carts로 뿌려주기
         model.addAttribute("carts", cartEntity);
 
         return "articles/cart";
     }
+
+//    public void addCart(Users users, Product product, int amount)
+//    {
+//    }
 }
