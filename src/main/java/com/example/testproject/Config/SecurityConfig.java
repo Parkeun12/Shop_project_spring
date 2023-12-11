@@ -32,6 +32,7 @@ public class SecurityConfig {
                         //antMatchers 파라미터로 설정한 리소스 접근을 인증절차 없이 허용
                         .requestMatchers("/users/**","/js/**", "/css/**", "/img/**","/product/**","/mainshop/**","/wishlist/**").permitAll()
                         .anyRequest().authenticated()
+
                 )
                 .formLogin(login -> login
                         .loginPage("/users/login").permitAll() //로그인페이지 URL
